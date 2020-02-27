@@ -5,8 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
-from .forms import CriacaoUsusarioForm, ClienteForm
-from .models import Cliente
+from .forms import CriacaoUsusarioForm, PerfilForm
+from .models import Perfil
 
 def paginaRegistro(request):
     if request.user.is_authenticated:
@@ -56,11 +56,11 @@ def paginaObrigado(request):
 
 @login_required(login_url='login')
 def userDashboard(request):
-    cliente = request.user.cliente
-    form = ClienteForm(instance=cliente)
+    perfil = request.user.perfil
+    form = PerfilForm(instance=perfil)
 
     if request.method == 'POST':
-        form = ClienteForm(request.POST, request.FILES, instance=cliente)
+        form = PerfilForm(request.POST, request.FILES, instance=perfil)
         if form.is_valid():
             form.save()
 

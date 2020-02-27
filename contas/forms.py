@@ -17,8 +17,8 @@ class CriacaoUsusarioForm(UserCreationForm):
         ]
 
 
-class ClienteForm(ModelForm):
+class PerfilForm(ModelForm):
     class Meta:
-        model = Cliente
+        model = Perfil
         fields = '__all__'
         exclude = ['user']
