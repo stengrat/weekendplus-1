@@ -1,0 +1,14 @@
+<h2>Pagina Dashboard Usuário</h2>
+
+<div>
+    <span>Olá, {{ request.user }}</span>
+    <span><a href="{% url 'logout' %}">Logout</a></span>
+</div>
+
+<div>
+    {% for cliente in clientes %}
+        <p>{{ cliente.user }}</p>
+        <p>{{ cliente.telefone }}</p>
+        <p>{{ cliente.cep }}</p>
+    {% endfor %}
+</div>

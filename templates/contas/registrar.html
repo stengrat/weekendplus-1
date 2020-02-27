@@ -1,0 +1,34 @@
+<h2>pagina de registro</h2>
+
+<form  method="POST" action="">
+    {% csrf_token %}
+    <div>
+        {{ form.username.label }}
+        {{ form.username }}
+    </div>
+    <div>
+        {{ form.email.label }}
+        {{ form.email }}
+    </div>
+    <div>
+        {{ form.password1.label }}
+        {{ form.password1 }}
+    </div>
+    <div>
+        {{ form.password2.label }}
+        {{ form.password2 }}
+    </div>
+    
+
+    <input type="submit" name="Create User">
+</form>
+
+<div>
+    {% for message in messages %}
+        <p id="messages">{{ message }}</p>
+    {% endfor %}
+</div>
+
+<div>
+    Já possui sua conta? <a href="{% url 'login' %}">Login</a>
+</div>
