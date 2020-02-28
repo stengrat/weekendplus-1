@@ -1,5 +1,10 @@
-<h2>Pagina de Obrigado</h2>
-
-<div>
-    <p>Obrigado por se cadastrar, confirme seu email para ativar sua conta!</p>
-</div>
+{%extends 'home/index.html'%}
+{% load static %}
+{% block obrigado %}
+    <div class="carousel">
+    <a class="carousel-item" href="#one!"><img src="{% static "images/parallax_pagina_obrigado.jpg" %}"></a>
+    <a class="carousel-item" href="#two!"><img src="{% static "images/parallax_pagina_obrigado.jpg" %}"></a>
+  </div>
+    
+{%endblock%}
+<!--{% static "images/parallax_pagina_obrigado.jpg" %}-->
