@@ -20,5 +20,10 @@
     {% endfor %}
 </div>
 <div>
-    Não possui uma conta ainda? <a href="{% url 'registrar' %}">Sign Up</a>
+    <div>
+        Não possui uma conta ainda? <a href="{% url 'registrar' %}">Sign Up</a>
+    </div>
+    <div>
+        Esqueceu sua senha? <a href="{% url 'reset_password' %}">Trocar senha</a>
+    </div>
 </div>
