@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'contas',
     'home',
+
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +132,7 @@ MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #Configurações SMTP 
 
