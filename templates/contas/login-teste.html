@@ -1,0 +1,43 @@
+{%extends 'home/index.html'%}
+
+{% block login %}
+    <div class="container">
+        <div class="card mt-5">
+            <div class="card-header text-center">
+                <h2 class="mt-5">LOGIN</h2>
+            </div>
+            <div class="card-body">
+                <div class="text-center mt-3">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div>
+                            <input type="text" name="username" placeholder="Username...">
+                        </div>
+                        <div>
+                            <input type="password" name="senha" placeholder="Senha...">
+                        </div>
+                        <div>
+                            <input class='btn btn-primary mt-3 mb-3' type="submit" value="Login">
+                        </div>
+                    </form>
+                    <div>
+                        {% for message in messages %}
+                            <p id="messages">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                </div>   
+            </div>            
+            
+            <div class="card-footer text-muted">
+                <div class="text-center mt-3">
+                    <div>
+                        Não possui uma conta ainda? <a href="{% url 'registrar' %}">Sign Up</a>
+                    </div>
+                    <div>
+                        Esqueceu sua senha? <a href="{% url 'reset_password' %}">Trocar senha</a>
+                    </div>
+                </div>    
+            </div>                            
+        </div>
+    </div>
+{% endblock login %}

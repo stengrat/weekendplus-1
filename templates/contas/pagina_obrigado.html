@@ -1,0 +1,20 @@
+{%extends 'home/index.html'%}
+{% load static %}
+{% block obrigado %}
+{%include "home/navbar.html" %}
+  <div class="jumbotron text-center bg-info w-100 h-100">
+      <h1 class="display-3 mb-5">Obrigado!</h1>
+      
+      <p class="lead"><strong>Verifique o seu email</strong>  para completar o  cadastro.</p>
+      <hr>
+      <p>
+        Alguma duvida? <a href="">Entre em Contato</a>
+      </p>
+      <p class="lead">
+        <a class="btn btn-primary btn-sm" href="{%url 'login' %}" role="button">Ir para tela inicial</a>
+      </p>
+  </div>
+    
+
+{%endblock%}
+<!--{% static "images/parallax_pagina_obrigado.jpg" %}-->
