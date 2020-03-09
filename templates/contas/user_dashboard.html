@@ -3,58 +3,53 @@
 {% load crispy_forms_tags %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WeekendPlus</title>
 
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}">
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{% static "fonts/font-awesome-4.7.0/css/font-awesome.min.css" %}">
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{% static "fonts/Linearicons-Free-v1.0.0/icon-font.min.css" %}">
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{% static "vendor/animate/animate.css" %}">
-    <!--===============================================================================================-->	
-        <link rel="stylesheet" type="text/css" href="{% static "vendor/css-hamburgers/hamburgers.min.css" %}">
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{% static "vendor/animsition/css/animsition.min.css" %}">
-    <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{% static "vendor/select2/select2.min.css" %}">
-    <!--===============================================================================================-->	
-        <link rel="stylesheet" type="text/css" href="{% static "vendor/daterangepicker/daterangepicker.css" %}">
-    <!--===============================================================================================-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <link rel="stylesheet" href="{% static "css/main.css" %}">
-    <link rel="stylesheet" href="{% static "css/util.css" %}">
+  <title>Weekend Plus</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/agency.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
 
 </head>
-<body>
 
-        
+<body id="page-top">
 
-<div class="container-fluid">
+
+  <div class="container-fluid">
     <div class="row">
-      <nav class="col-md-2 d-none d-md-block bg-light sidebar bg-dark">
-        <div class="sidebar-sticky">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar bg-dark text-white">
+        <div class="sidebar-sticky mx-4">
           <ul class="nav flex-column">
-            <h4>Pagina Dashboard Usuário</h4>
             <div>
-                <div class="mt-5">
-                    <img src="{{ request.user.cliente.imagem_perfil.url }}" style="vertical-align: middle; width: 100px; height:100px; border-radius: 50%;">
-                </div>
-                <div class="mt-5 mb-5">
-                    <span>Olá, {{ request.user }}</span>
-                    <span><a href="{% url 'logout' %}">Logout</a></span>
-                </div>
-                
+              <div class="mt-5">
+                <img class="mx-4" src="{{ request.user.cliente.imagem_perfil.url }}"
+                  style="vertical-align: middle; width: 100px; height:100px; border-radius: 50%;">
+              </div>
+              <div class="mt-5 mb-5">
+                <span>Olá, {{ request.user }}</span>
+                <span><a href="{% url 'logout' %}">Logout</a></span>
+              </div>
+
             </div>
             <li class="nav-item">
               <a class="nav-link active" href="#">
@@ -79,46 +74,49 @@
       </nav>
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <div class="row">
-                <h1 class="h2">Dashboard</h1>
-                <div>
-                    <form method="POST" action="" enctype="multipart/form-data">
-                        <div class="form-grouP">
-                            {% csrf_token %}
-        
-                            {{ form|crispy }}
-            
-                            <input type="submit" value="Atualizar">
-                        </div>
-                    </form>
-                </div>
-                
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <div class="row">
+            <div class="container">
+                <h1>Dashboard</h1>
             </div>
             
-         
-        </div>       
+            <div class="container jumbotron">
+              <form method="POST" action="" enctype="multipart/form-data">
+                <div class="form-grouP">
+                  {% csrf_token %}
+
+                  {{ form|crispy }}
+
+                  <input type="submit" value="Atualizar">
+                </div>
+              </form>
+            </div>
+
+          </div>
+
+
+        </div>
       </main>
     </div>
   </div>
 
-    <!-- Compiled and minified JavaScript -->
-    <!--===============================================================================================-->
-	<script src="{% static "vendor/jquery/jquery-3.2.1.min.js" %}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static "vendor/animsition/js/animsition.min.js" %}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static "vendor/bootstrap/js/popper.js" %}"></script>
-    <script src="{% static "vendor/bootstrap/js/bootstrap.min.js" %}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static "vendor/select2/select2.min.js" %}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static "vendor/daterangepicker/moment.min.js" %}"></script>
-    <script src="{% static "vendor/daterangepicker/daterangepicker.js" %}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static "vendor/countdowntime/countdowntime.js" %}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static "js/main.js" %}"></script>
-    
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Contact form JavaScript -->
+  <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+  <script src="{% static 'js/contact_me.js' %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'js/agency.min.js' %}"></script>
+
 </body>
+
 </html>
