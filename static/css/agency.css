@@ -104,7 +104,7 @@ img::-moz-selection {
 }
 
 .btn-primary:active, .btn-primary:focus {
-  box-shadow: 0 0 0 0.2rem rgba(254, 209, 55, 0.5) !important;
+  box-shadow: 0 0 0 0.2rem #325d66 !important;
 }
 
 #mainNav {
@@ -250,7 +250,7 @@ header.masthead .intro-text .intro-heading {
   height: 100%;
   transition: all ease 0.5s;
   opacity: 0;
-  background: rgba(254, 209, 54, 0.9);
+  background:#325d66;
 }
 
 #portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {

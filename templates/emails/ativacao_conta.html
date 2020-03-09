@@ -1,7 +1,7 @@
 {% autoescape off %}
 Olá {{ user.username }},
-<br>
-Porfavor clique no link abaixo para completar seu registro
-<br>
+
+Porfavor clique no link abaixo para completar seu registro:
+
 http>//{{ domain }}{% url 'activate' uidb64=uid token=token %}
 {% endautoescape %}
