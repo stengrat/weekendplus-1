@@ -1,0 +1,35 @@
+{% extends 'base/dashboard_base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block conta %}
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div class="row">
+      <div class="container">
+        <h1>Dados da Conta</h1>
+      </div>
+
+      <div class="container mt-3">
+        <h4 class="mb-5">Atualize abaixo dados da sua conta</h4>
+        <form method="POST" action="" enctype="multipart/form-data">
+          <div class="form-group">
+            {% csrf_token %}
+            <div class="form-label-group">
+                {{ form|crispy }}
+            </div>
+            <input type="submit" value="Atualizar" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+
+  </div>
+</main>
+
+{% endblock conta %}

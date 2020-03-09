@@ -21,4 +21,4 @@ class PerfilForm(ModelForm):
     class Meta:
         model = Perfil
         fields = '__all__'
-        exclude = ['user']
+        exclude = ['user', 'email_confirmado']

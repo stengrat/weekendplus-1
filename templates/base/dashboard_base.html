@@ -38,11 +38,14 @@
   <div class="container-fluid">
     <div class="row">
       <nav class="col-md-2 d-none d-md-block bg-light sidebar bg-dark text-white">
-        <div class="sidebar-sticky mx-4">
+        <div class="sidebar-sticky mx-2">
           <ul class="nav flex-column">
             <div>
+              <div class="mx-5">
+                <img src="{% static 'images/wplus-logo.png' %}" width="75" height="45" alt="">
+              </div>
               <div class="mt-5">
-                <img class="mx-4" src="{{ request.user.cliente.imagem_perfil.url }}"
+                <img class="mx-4" src="{{ request.user.perfil.imagem_perfil.url }}"
                   style="vertical-align: middle; width: 100px; height:100px; border-radius: 50%;">
               </div>
               <div class="mt-5 mb-5">
@@ -52,52 +55,30 @@
 
             </div>
             <li class="nav-item">
-              <a class="nav-link active" href="#">
-                <span data-feather="home"></span>
-                Dashboard <span class="sr-only">(current)</span>
+              <a class="nav-link active" href="{% url 'dashboard' %}">
+                <span data-feather="home"></span>Meu Perfil <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dashboard_conta' %}">
+                <span data-feather="file"></span>Minha conta 
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <span data-feather="file"></span>
-                Orders
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="shopping-cart"></span>
-                Products
+                <span data-feather="shopping-cart"></span>Products
               </a>
             </li>
           </ul>
         </div>
       </nav>
 
-      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <div
-          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <div class="row">
-            <div class="container">
-                <h1>Dashboard</h1>
-            </div>
-            
-            <div class="container jumbotron">
-              <form method="POST" action="" enctype="multipart/form-data">
-                <div class="form-grouP">
-                  {% csrf_token %}
+      {% block perfil %}
+      {% endblock perfil %}
 
-                  {{ form|crispy }}
+      {% block conta %}
+      {% endblock conta %}
 
-                  <input type="submit" value="Atualizar">
-                </div>
-              </form>
-            </div>
-
-          </div>
-
-
-        </div>
-      </main>
     </div>
   </div>
 

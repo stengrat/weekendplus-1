@@ -8,7 +8,8 @@ urlpatterns = [
     path('login/', views.paginaLogin, name='login'),
     path('logout/', views.logoutUser, name='logout'),
     path('obrigado/', views.paginaObrigado, name='obrigado'),
-    path('dashboard/', views.userDashboard, name='dashboard'),
+    path('dashboard_perfil/', views.userDashboardPerfil, name='dashboard'),
+    path('dashboard_conta/', views.userDashboardConta, name='dashboard_conta'),
 
     # Rotas para reset de senha
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name='contas/password_reset.html'), name='reset_password'),

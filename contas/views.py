@@ -76,7 +76,7 @@ def paginaObrigado(request):
 
 
 @login_required(login_url='login')
-def userDashboard(request):
+def userDashboardPerfil(request):
     perfil = request.user.perfil
     form = PerfilForm(instance=perfil)
 
@@ -86,7 +86,20 @@ def userDashboard(request):
             form.save()
 
     context = {'form': form}
-    return render(request, 'contas/user_dashboard.html', context)
+    return render(request, 'contas/user_dashboard_perfil.html', context)
+
+
+@login_required(login_url='login')
+def userDashboardConta(request):
+    form = CriacaoUsusarioForm()
+    if request.method == 'POST':
+        form = CriacaoUsusarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    context = {'form': form}
+    return render(request, 'contas/user_dashboard_conta.html', context)
+
 
 def ativacaoConta(request, uidb64, token):
     try:

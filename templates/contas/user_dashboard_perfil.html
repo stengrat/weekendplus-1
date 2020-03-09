@@ -1,0 +1,60 @@
+{% extends 'base/dashboard_base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block perfil %}
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div class="row">
+      <div class="container">
+        <h1>Dados Pessoas</h1>
+      </div>
+
+      <div class="container mt-3">
+        <h4 class="mb-5">Atualize abaixo seus dados pessoais</h4>
+        <form method="POST" action="" enctype="multipart/form-data">
+          <div class="form-group">
+            {% csrf_token %}
+            <div class="form-label-group">
+                {{ form.telefone|as_crispy_field }}
+            </div>
+            <div class="form-label-group">
+                {{ form.cep|as_crispy_field }}
+            </div>
+            <div class="form-label-group">
+                {{ form.pais|as_crispy_field }}
+            </div>
+            <div class="form-label-group">
+                {{ form.estado|as_crispy_field }}
+            </div>
+            <div class="form-label-group">
+                {{ form.cidade|as_crispy_field }}
+            </div>
+            <div class="form-label-group">
+                {{ form.logradouro|as_crispy_field }}
+            </div>
+            <div class="form-label-group">
+                {{ form.complemento|as_crispy_field }}
+            </div>
+            <div class="form-label-group">
+                {{ form.numero|as_crispy_field }}
+            </div>
+            <div class="form-label-group">
+                {{ form.imagem_perfil|as_crispy_field }}
+            </div>
+
+            <input type="submit" value="Atualizar" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+
+  </div>
+</main>
+
+{% endblock perfil %}
