@@ -10,7 +10,7 @@ from django.shortcuts import render, redirect
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
-from .forms import CriacaoUsusarioForm, PerfilForm
+from .forms import CriacaoUsusarioForm, PerfilForm, ContaUsuarioForm
 from .models import Perfil
 from .tokens import contas_token_ativacao
 
@@ -91,9 +91,9 @@ def userDashboardPerfil(request):
 
 @login_required(login_url='login')
 def userDashboardConta(request):
-    form = CriacaoUsusarioForm()
+    form = ContaUsuarioForm(instance=request.user)
     if request.method == 'POST':
-        form = CriacaoUsusarioForm(request.POST)
+        form = ContaUsuarioForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
 
