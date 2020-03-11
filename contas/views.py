@@ -105,6 +105,7 @@ def userDashboardConta(request):
     return render(request, 'contas/user_dashboard_conta.html', context)
 
 
+# função para validação da conta e ativação do usuário
 def ativacaoConta(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
