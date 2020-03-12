@@ -16,16 +16,17 @@
 </details>
 
 <details><summary>3. Crie uma VirtualEnv</summary>
-1. Em seu terminal digite: virtualenv Django 
-2. Em seguida:   .\Django\Scripts\activate
+* 1. Em seu terminal digite: virtualenv Django <br/>
+* 2. Em seguida:   .\Django\Scripts\activate
 </details>
 <details><summary>4. Instalar dependencias Django</summary>
-1. Em seu terminal digite: cd weekendplus
-2. Em seguida:   pip install -r requirements.txt  
+1. *Em seu terminal digite: cd weekendplus <br/>
+2. *Em seguida:   pip install -r requirements.txt  
 </details>
 <details><summary>5. Finalizando</summary>
-1. Dentro da pasta weekendplus digite python manage.py runserver
-2. Acesse http://127.0.0.1:8000/
+* 1. Dentro da pasta weekendplus digitepython manage.py migrate  <br/>
+*2. Depois: python manage.py runserver <br/>
+*3. Acesse http://127.0.0.1:8000/
 </details>
 
 
