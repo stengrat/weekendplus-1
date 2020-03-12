@@ -29,8 +29,8 @@
 *3. Acesse http://127.0.0.1:8000/
 </details>
 
-##Erro
-  Caso ocorra um erro de segurança ao tentar ativar a virtual env abra o powershell em modo adiministrador e digite o seguinte comando: <br/>
-  Set-ExecutionPolicy RemoteSigned
+## Erro
+*  Caso ocorra um erro de segurança ao tentar ativar a virtual env abra o powershell em modo adiministrador e digite o seguinte comando: <br/>
+ * Set-ExecutionPolicy RemoteSigned
 
 
