@@ -6,9 +6,7 @@
 
 {% block conta %}
 
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <div class="row">
+  <div class="row">
       <div class="container">
         <h1>Dados da Conta</h1>
       </div>
@@ -19,7 +17,7 @@
           <div class="form-group">
             {% csrf_token %}
             <div class="form-label-group">
-                {{ form|crispy }}
+              {{ form|crispy }}
             </div>
             <input type="submit" value="Atualizar" class="btn btn-primary">
           </div>
@@ -27,9 +25,8 @@
       </div>
 
     </div>
+ 
 
 
-  </div>
-</main>
 
 {% endblock conta %}

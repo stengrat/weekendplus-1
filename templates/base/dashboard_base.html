@@ -32,9 +32,10 @@
 
 </head>
 
-<body id="page-top">
 
 
+<!-- 
+  <body id="page-top">
   <div class="container-fluid">
     <div class="row">
       <nav class="col-md-2 d-none d-md-block bg-light sidebar bg-dark text-white">
@@ -72,31 +73,145 @@
           </ul>
         </div>
       </nav>
+-->
 
-      {% block perfil %}
-      {% endblock perfil %}
+<body>
+  <div class="page-wrapper chiller-theme toggled">
+    <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav id="sidebar" class="sidebar-wrapper">
+      <div class="sidebar-content">
+        <div class="sidebar-brand">
+          <div class="mr-5 pr-5">
+            <img src="{% static 'images/wplus-logo.png' %}" width="75" height="45" alt="">
+          </div>          
+          <div id="close-sidebar">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+        <div class="sidebar-header">
+          <div class="user-pic">
+            <img class="img-responsive img-rounded"
+              src="{{ request.user.perfil.imagem_perfil.url }}"
+              alt="User picture">
+          </div>
+          <div class="user-info">
+            <span class="user-name">{{ request.user.first_name }}
+              <strong>{{ request.user.last_name }}</strong>
+            </span>
+            <!-- <span class="user-role">Administrator</span> --> 
+            <span class="user-status">
+              <i class="fa fa-circle"></i>
+              <span>Online</span>
+            </span>
+            <span class="user-role text-primary"><a href="{% url 'logout' %}">Logout</a></span>
+          </div>
+        </div>
+        <!-- sidebar-header  
+        <div class="sidebar-search">
+          <div>
+            <div class="input-group">
+              <input type="text" class="form-control search-menu" placeholder="Search...">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- sidebar-search  -->
+        <div class="sidebar-menu">
+          <ul>
+            <li class="header-menu">
+              <span>General</span>
+            </li>
+            <li>
+              <a href="{% url 'dashboard' %}">
+                <i class="fas fa-address-book"></i>
+                <span>Meu Perfil</span>
+                <!--<span class="badge badge-pill badge-warning">New</span>-->
+              </a>
+              
+            </li>
+            <li>
+              <a href="{% url 'dashboard_conta' %}">
+                <i class="fas fa-address-card"></i>
+                <span>Dados da Conta</span>
+              </a>
+            </li>
 
-      {% block conta %}
-      {% endblock conta %}
+            <li>
+              <a href="#">
+                <i class="fas fa-credit-card"></i>
+                <span>Alterar Plano</span>                
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-calendar"></i>
+                <span>Últimos Adds</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fas fa-splotch"></i>
+                <span>Favoritos</span>
+                <span class="badge badge-pill badge-primary">Beta</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- sidebar-menu  -->
+      </div>
+      <!-- sidebar-content 
+      <div class="sidebar-footer">
+        <a href="#">
+          <i class="fa fa-bell"></i>
+          <span class="badge badge-pill badge-warning notification">3</span>
+        </a>
+        <a href="#">
+          <i class="fa fa-envelope"></i>
+          <span class="badge badge-pill badge-success notification">7</span>
+        </a>
+        <a href="#">
+          <i class="fa fa-cog"></i>
+          <span class="badge-sonar"></span>
+        </a>
+        <a href="#">
+          <i class="fa fa-power-off"></i>
+        </a>
+      </div>
+    </nav>
+    <!-- sidebar-wrapper  -->
+    <main class="page-content">
+      <div class="container-fluid">
+        {% block perfil %}
+        {% endblock perfil %}
 
-    </div>
+        {% block conta %}
+        {% endblock conta %}
+      </div>
+    </main>
   </div>
+</body>
 
 
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-  <!-- Plugin JavaScript -->
-  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+<!-- Plugin JavaScript -->
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
-  <!-- Contact form JavaScript -->
-  <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
-  <script src="{% static 'js/contact_me.js' %}"></script>
+<!-- Contact form JavaScript -->
+<script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+<script src="{% static 'js/contact_me.js' %}"></script>
 
-  <!-- Custom scripts for this template -->
-  <script src="{% static 'js/agency.min.js' %}"></script>
+<!-- Custom scripts for this template -->
+<script src="{% static 'js/js_dashboard.js' %}"></script>
 
 </body>
 
