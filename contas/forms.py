@@ -6,6 +6,7 @@ from django.forms import ModelForm
 from .models import *
 
 
+#  classe para criar o formulário de atualização dos dados na página de dashboard do usuário
 class ContaUsuarioForm(UserCreationForm):
     class Meta:
         model = User
@@ -19,6 +20,7 @@ class ContaUsuarioForm(UserCreationForm):
         ]
 
 
+# formulário de cadastro do usuário
 class CriacaoUsusarioForm(UserCreationForm):
     class Meta:
         model = User
@@ -29,7 +31,7 @@ class CriacaoUsusarioForm(UserCreationForm):
             'password2',
         ]
 
-
+# Formulário de atualização do perfil para dashboard do usuário
 class PerfilForm(ModelForm):
     class Meta:
         model = Perfil

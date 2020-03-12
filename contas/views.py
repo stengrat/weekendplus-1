@@ -14,6 +14,7 @@ from .forms import CriacaoUsusarioForm, PerfilForm, ContaUsuarioForm
 from .models import Perfil
 from .tokens import contas_token_ativacao
 
+#view para tratamento do formulário de registro de novo usuário
 def paginaRegistro(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
@@ -25,7 +26,8 @@ def paginaRegistro(request):
                 user = form.save()
                 user.is_activate = False
                 user.save()
-
+                
+                # Definição do envio de email quando o formulário de registro é enviado e é válido
                 current_site = get_current_site(request)
                 assunto = 'Ativação da conta WPlus'
                 menssagem = render_to_string('emails/ativacao_conta.html',
@@ -75,6 +77,7 @@ def paginaObrigado(request):
     return render(request, 'contas/pagina_obrigado.html', context)
 
 
+#Decorator para acessar a pagina de dashboard, apenas se o usuário estiver logado, cao não, direciona para pagina de login
 @login_required(login_url='login')
 def userDashboardPerfil(request):
     perfil = request.user.perfil
@@ -89,6 +92,7 @@ def userDashboardPerfil(request):
     return render(request, 'contas/user_dashboard_perfil.html', context)
 
 
+#Decorator para acessar a pagina de dashboard, apenas se o usuário estiver logado, cao não, direciona para pagina de login
 @login_required(login_url='login')
 def userDashboardConta(request):
     form = ContaUsuarioForm(instance=request.user)
@@ -101,6 +105,7 @@ def userDashboardConta(request):
     return render(request, 'contas/user_dashboard_conta.html', context)
 
 
+# função para validação da conta e ativação do usuário
 def ativacaoConta(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))

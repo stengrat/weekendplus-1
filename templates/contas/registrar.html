@@ -8,14 +8,17 @@
 	<div class="row no-gutter">
 		<div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
 		<div class="col-md-8 col-lg-6">
+			<div  class="text-right mr-5">
+				<a href="{% url 'home' %}"><i class="fas fa-2x fa-times text-white"></i></a>
+			</div>
 			<div class="login d-flex align-items-center py-5">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-9 col-lg-8 mx-auto">
-							<div class="mb-5">
+							<div class="mb-5 row d-flex justify-content-center">
 								<img src="{% static 'images/wplus-logo.png' %}" width="75" height="45" alt="">
 							</div>
-							<h3 class="login-heading mb-5">Bem vindo!</h3>
+							<h3 class="login-heading mb-5 text-center">Bem vindo!</h3>
 							<form method="POST">
 								{% csrf_token %}
 								<div class="form-label-group">
