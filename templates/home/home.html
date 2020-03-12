@@ -1,5 +1,5 @@
 {% extends 'base/index.html' %}
-
+{% load static %}
 {% block homepage %}
 {% include 'base/navbar.html' %}
 
@@ -61,8 +61,8 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2 class="section-heading text-uppercase">About</h2>
-        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        <h2 class="section-heading text-uppercase">Sobre</h2>
+        <h3 class="section-subheading text-muted"></h3>
       </div>
     </div>
     <div class="row">
@@ -70,73 +70,65 @@
         <ul class="timeline">
           <li>
             <div class="timeline-image">
-              <img class="rounded-circle img-fluid" src="img/about/1.jpg" alt="">
+              <img class="rounded-circle img-fluid" src="{% static "img/about/1.png" %}" alt="">
             </div>
             <div class="timeline-panel">
               <div class="timeline-heading">
                 <h4>2009-2011</h4>
-                <h4 class="subheading">Our Humble Beginnings</h4>
+                <h4 class="subheading">Inicio</h4>
               </div>
               <div class="timeline-body">
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius
-                  sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo
-                  dolore laudantium consectetur!</p>
+                <p class="text-muted">Ricardo Taverna e Ygor Stengrat idealizam a ideia da plataforma W+</p>
               </div>
             </div>
           </li>
           <li class="timeline-inverted">
             <div class="timeline-image">
-              <img class="rounded-circle img-fluid" src="img/about/2.jpg" alt="">
+              <img class="rounded-circle img-fluid" src="{% static "img/about/2.jpg" %}" alt="">
             </div>
             <div class="timeline-panel">
               <div class="timeline-heading">
-                <h4>March 2011</h4>
-                <h4 class="subheading">An Agency is Born</h4>
+                <h4>Maio 2011</h4>
+                <h4 class="subheading">Fundação</h4>
               </div>
               <div class="timeline-body">
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius
-                  sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo
-                  dolore laudantium consectetur!</p>
+                <p class="text-muted">Ricardo Taverna e Ygor Stengrat fundaram a W+, plataforma de streaming</p>
               </div>
             </div>
           </li>
           <li>
             <div class="timeline-image">
-              <img class="rounded-circle img-fluid" src="img/about/3.jpg" alt="">
+              <img class="rounded-circle img-fluid" src="{% static "img/about/3.jpg" %}" alt="">
             </div>
             <div class="timeline-panel">
               <div class="timeline-heading">
-                <h4>December 2012</h4>
-                <h4 class="subheading">Transition to Full Service</h4>
+                <h4>Dezembro 2012</h4>
+                <h4 class="subheading">Expansão</h4>
               </div>
               <div class="timeline-body">
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius
-                  sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo
-                  dolore laudantium consectetur!</p>
+                <p class="text-muted">A plataforma W+ começou a expandir seus horizontes para mais de 50 paises</p>
               </div>
             </div>
           </li>
           <li class="timeline-inverted">
             <div class="timeline-image">
-              <img class="rounded-circle img-fluid" src="img/about/4.jpg" alt="">
+              <img class="rounded-circle img-fluid" src="{% static "img/about/4.jpg" %}" alt="">
             </div>
             <div class="timeline-panel">
               <div class="timeline-heading">
-                <h4>July 2014</h4>
-                <h4 class="subheading">Phase Two Expansion</h4>
+                <h4>Julho 2014</h4>
+                <h4 class="subheading">Entrada na crianção de conteudo</h4>
               </div>
               <div class="timeline-body">
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius
-                  sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo
-                  dolore laudantium consectetur!</p>
+                <p class="text-muted">A W+ entra para o ramo de crianção de Séries e Filmes originais Weekend Plus</p>
               </div>
             </div>
           </li>
           <li class="timeline-inverted">
             <div class="timeline-image">
-              <h4>Be Part
-                <br>Of Our
-                <br>Story!</h4>
+              <h4>Fazendo
+                <br>Parte da
+                <br>Sua História!</h4>
             </div>
           </li>
         </ul>
@@ -315,17 +307,17 @@
       <div class="col-md-4">
         <ul class="list-inline social-buttons">
           <li class="list-inline-item">
-            <a href="#">
+            <a href="https://twitter.com/home">
               <i class="fab fa-twitter"></i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a href="#">
+            <a href="https://www.facebook.com/">
               <i class="fab fa-facebook-f"></i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a href="#">
+            <a href="http://linkedin.com/">
               <i class="fab fa-linkedin-in"></i>
             </a>
           </li>
