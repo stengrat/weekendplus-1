@@ -2,29 +2,40 @@
 {% load static %}
 {% block obrigado %}
 {%include "base/navbar.html" %}
- 
+
+<!--
+<div class="masthead">
   <div class="jumbotron jumbotron-fluid text-center bg-dark text-white w-100 h-100">
-    <div class="fullscreen-bg"></div>
-    <img  src="{% static "images/check.png" %}" alt="">
-  
-    <h1 class="display-3 mt-2 mb-2">Obrigado!</h1>
-    {% for message in messages %}
-    <div class="mt-3 mb-3">
-      <p id="messages" class="red">{{ message }}</p>
+    <div class="fullscreen-bg">
+    
     </div>
-    {% endfor %}
-    <p class="lead"><strong>Verifique o seu email</strong> para completar o cadastro.</p>
-    <hr>
-    <p>
-      Alguma duvida? <a href="">Entre em Contato</a>
-    </p>
-    <p class="lead">
-      <a class="btn btn-primary btn-sm" href="{%url 'login' %}" role="button">Ir para tela inicial</a>
-    </p>
   </div>
+</div> -->
+<header class="masthead">
+  <div class="container-fluid no-gutter">
+    <div class="intro-text" style="margin-top: -200px;">
+      
+      <img  src="{% static "images/check.png" %}" width="200px"alt="">
+  
+      <h1 class="display-3">Obrigado!</h1>
+      {% for message in messages %}
+      <div class="mt-3 mb-3">
+        <p id="messages" class="red">{{ message }}</p>
+      </div>
+      {% endfor %}
+      <p class="lead"><strong>Verifique o seu email</strong> para completar o cadastro.</p>
+      <hr>
+      <p>
+        Alguma duvida? <a href="">Entre em Contato</a>
+      </p>
+      <p class="lead">
+        <a class="btn btn-primary btn-sm" href="{%url 'login' %}" role="button">Ir para tela inicial</a>
+      </p>
+    </div>
+  </div>
+</header>
 
-
-
+{% include 'base/footer.html' %}
 
 {%endblock%}
 <!--{% static "images/parallax_pagina_obrigado.jpg" %}-->
