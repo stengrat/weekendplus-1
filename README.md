@@ -8,8 +8,8 @@
 
 ## Instalação
 <details><summary>1. VirtualEnv</summary>
-1. Em seu cmd ou Terminal do VisualCode digite o seguinte comando
-** pip3 install virtualenv    
+1. Em seu cmd ou Terminal do VisualCode digite o seguinte comando<br/>
+ pip3 install virtualenv    
 </details>
 <details><summary>2. Clone nosso Projeto</summary>
 1. git clone https://github.com/RicardoTaverna/weekendplus.git   
