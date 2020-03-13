@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     'contas',
     'home',
-    'produtos',
+    'midia',
 
     'crispy_forms',
 ]
