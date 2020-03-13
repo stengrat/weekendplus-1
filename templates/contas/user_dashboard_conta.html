@@ -6,26 +6,26 @@
 
 {% block conta %}
 
-  <div class="row">
-      <div class="container">
-        <h1>Dados da Conta</h1>
-      </div>
+<div class="row">
+  <div class="container">
+    <h1>Dados da Conta</h1>
+  </div>
 
-      <div class="container mt-3">
-        <h4 class="mb-5">Atualize abaixo dados da sua conta</h4>
-        <form method="POST" action="" enctype="multipart/form-data">
-          <div class="form-group">
-            {% csrf_token %}
-            <div class="form-label-group">
-              {{ form|crispy }}
-            </div>
-            <input type="submit" value="Atualizar" class="btn btn-primary">
-          </div>
-        </form>
+  <div class="container mt-3">
+    <h4 class="mb-5">Atualize abaixo dados da sua conta</h4>
+    <form method="POST" action="" enctype="multipart/form-data">
+      <div class="form-group">
+        {% csrf_token %}
+        <div class="form-label-group">
+          {{ form|crispy }}
+        </div>
+        <input type="submit" value="Atualizar" class="btn btn-primary">
       </div>
+    </form>
+  </div>
 
-    </div>
- 
+</div>
+
 
 
 
