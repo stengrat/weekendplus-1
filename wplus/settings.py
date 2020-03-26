@@ -79,14 +79,14 @@ WSGI_APPLICATION = 'wplus.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'weekend',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
+        'NAME': 'weekendplus',
+        'USER': 'weekendplus',
+        'PASSWORD': 'fR3FCAjFyq9eDFRV',
+        'HOST': '144.91.110.253',
         'PORT': '3306',
 
     }
@@ -99,7 +99,7 @@ DATABASES = {
 
         }
 }
-
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
