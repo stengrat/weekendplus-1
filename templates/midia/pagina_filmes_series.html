@@ -1,0 +1,96 @@
+{% extends 'base/index.html' %}
+{% load static %}
+{% block filmes_series %}
+{% include 'base/navbar.html' %}
+
+<header class="masthead">
+    <div class="container">
+        <div class="intro-text">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="..." class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="..." class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="..." class="d-block w-100" alt="...">
+                    </div>
+                </div>
+            </div>
+            <div class="intro-lead-in">Bem vindo a Weekend Plus!</div>
+            <div class="intro-heading text-uppercase">Seu streaming de filmes</div>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Sobre</a>
+        </div>
+    </div>
+</header>
+
+<!-- Services -->
+<section class="page-section">
+    <div class="container ">
+        <div class="container">
+            <div class="col-lg-12 text-left">
+                <h3 class="section-heading text-uppercase">Filmes</h3>
+
+            </div>
+        </div>
+        <div class="card-deck">
+            {% for filme in filmes %}
+            <div class="card col-sm-12 col-md-3 col-lg-2 shadow">
+                <img src="{{ filme.thumbnail.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h6 class="card-title  text-center">{{ filme.titulo }}</h6>
+                </div>
+                <div class="footer">
+                    <button class="btn btn-info" data-toggle="modal" data-target="#openModal_{{ filme.id }}" data-id="openModal_{{ filme.id }}">Open Modal</button>
+                </div>
+            </div>
+
+            <!-- Modal Filme -->
+
+            
+            <div class="modal fade " id="openModal_{{ filme.id }}" tabindex="-1" role="dialog"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h5 class="modal-title">{{ filme.titulo }}</h5>
+                                <p class="small muted">{{ filme.descricao }}</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="{{ filme.link }}?rel=0" allowfullscreen></iframe>
+                                </div>
+                                <p>{{ filme.link }}</p>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+{% endblock filmes_series %}

@@ -38,8 +38,8 @@ class Midia(models.Model):
     categoria = models.CharField(max_length=20, choices=CATEGORIA_LIST)
     genero = models.CharField(max_length=20, choices=GENERO_LIST)
     classificacao = models.CharField(max_length=20, choices=CLASSIFICACAO_LIST)
-    link = models.CharField(max_length=500, null=True)
-    thumbnail = models.ImageField(default='default-img.jpg', null=True, blank=True)
+    link = models.URLField(max_length=500, null=True)
+    thumbnail = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.titulo
