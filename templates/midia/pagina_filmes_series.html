@@ -26,24 +26,80 @@
     </div>
 </header>
 
-<!-- Services -->
+<!-- Ultimos Adicionados -->
+<section class="page-section">
+    <div class="container ">
+        <div class="container">
+            <div class="col-lg-12 text-left">
+                <h3 class="section-heading text-uppercase">Ultimos Atualizados</h3>
+            </div>
+
+            <div class="card-deck">
+                {% for ultimo in ultimos %}
+                <div class="card col-sm-12 col-md-3 col-lg-2 shadow">
+                    <img src="{{ ultimo.thumbnail.url }}" class="img-fluid" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title text-center"><a class="stretched-link" data-toggle="modal" data-target="#openModal_{{ ultimo.id }}" data-id="openModal_{{ ultimo.id }}">{{ ultimo.titulo }}</a></h6>
+                    </div>
+                </div>
+    
+                <!-- Modal Filme -->
+    
+                
+                <div class="modal fade " id="openModal_{{ ultimo.id }}" tabindex="-1" role="dialog"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5 class="modal-title">{{ ultimo.titulo }}</h5>
+                                    <p class="small muted">{{ ultimo.descricao }}</p>
+                                    <p class="small muted">Ano: {{ ultimo.ano }}</p>
+                                    <p class="small muted">Duração: {{ ultimo.duracao }}min</p>
+                                    <p class="small muted">Categoria: {{ ultimo.categoria }}</p>
+                                    <p class="small muted">Gênero: {{ ultimo.genero }}</p>
+                                    <p class="small muted">Classificação: {{ ultimo.classificacao }}</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" src="{{ ultimo.link }}?rel=0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+    
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Filmes -->
 <section class="page-section">
     <div class="container ">
         <div class="container">
             <div class="col-lg-12 text-left">
                 <h3 class="section-heading text-uppercase">Filmes</h3>
-
             </div>
         </div>
         <div class="card-deck">
             {% for filme in filmes %}
             <div class="card col-sm-12 col-md-3 col-lg-2 shadow">
-                <img src="{{ filme.thumbnail.url }}" class="card-img-top" alt="...">
+                <img src="{{ filme.thumbnail.url }}" class="img-fluid" alt="...">
                 <div class="card-body">
-                    <h6 class="card-title  text-center">{{ filme.titulo }}</h6>
-                </div>
-                <div class="footer">
-                    <button class="btn btn-info" data-toggle="modal" data-target="#openModal_{{ filme.id }}" data-id="openModal_{{ filme.id }}">Open Modal</button>
+                    <h6 class="card-title text-center"><a class="stretched-link" data-toggle="modal" data-target="#openModal_{{ filme.id }}" data-id="openModal_{{ filme.id }}">{{ filme.titulo }}</a></h6>
                 </div>
             </div>
 
@@ -62,12 +118,16 @@
                             <div class="col-sm-6">
                                 <h5 class="modal-title">{{ filme.titulo }}</h5>
                                 <p class="small muted">{{ filme.descricao }}</p>
+                                <p class="small muted">Ano: {{ filme.ano }}</p>
+                                <p class="small muted">Duração: {{ filme.duracao }}min</p>
+                                <p class="small muted">Categoria: {{ filme.categoria }} </p>
+                                <p class="small muted">Gênero: {{ filme.genero }}</p>
+                                <p class="small muted">Classificação: {{ filme.classificacao }}</p>
                             </div>
                             <div class="col-sm-6">
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <iframe class="embed-responsive-item" src="{{ filme.link }}?rel=0" allowfullscreen></iframe>
-                                </div>
-                                <p>{{ filme.link }}</p>
+                                </div>                                
                             </div>
                         </div>
                         
@@ -87,8 +147,66 @@
     </div>
 </section>
 
+<!-- Series -->
+<section class="page-section">
+    <div class="container ">
+        <div class="container">
+            <div class="col-lg-12 text-left">
+                <h3 class="section-heading text-uppercase">Series</h3>
+            </div>
 
-
+            <div class="card-deck">
+                {% for serie in series %}
+                <div class="card col-sm-12 col-md-3 col-lg-2 shadow">
+                    <img src="{{ serie.thumbnail.url }}" class="img-fluid" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title text-center"><a class="stretched-link" data-toggle="modal" data-target="#openModal_{{ serie.id }}" data-id="openModal_{{ serie.id }}">{{ serie.titulo }}</a></h6>
+                    </div>
+                </div>
+    
+                <!-- Modal Filme -->
+    
+                
+                <div class="modal fade " id="openModal_{{ filme.id }}" tabindex="-1" role="dialog"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5 class="modal-title">{{ serie.titulo }}</h5>
+                                    <p class="small muted">{{ serie.descricao }}</p>
+                                    <p class="small muted">Ano: {{ serie.ano }}</p>
+                                    <p class="small muted">Duração: {{ serie.duracao }}min</p>
+                                    <p class="small muted">Categoria: {{ serie.categoria }} </p>
+                                    <p class="small muted">Gênero: {{ serie.genero }}</p>
+                                    <p class="small muted">Classificação: {{ serie.classificacao }}</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" src="{{ serie.link }}?rel=0" allowfullscreen></iframe>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+    
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
