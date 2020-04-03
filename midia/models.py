@@ -10,10 +10,12 @@ class Midia(models.Model):
     GENERO_LIST = (
         ('Ação','Ação'),
         ('Anime','Anime'),
+        ('Aventura','Aventura'),
         ('Clássicos','Clássicos'),
         ('Comédia','Comédia'),
         ('Documentário','Documentário'),
         ('Drama','Drama'),
+        ('Fantasia','Fantasia'),
         ('Ficção Científica','Ficção Científica'),
         ('Musicais','Musicais'),
         ('Policiais','Policiais'),
