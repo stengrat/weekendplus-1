@@ -12,16 +12,24 @@
   </div>
 
   <div class="container mt-3">
-    <h4 class="mb-5">Atualize abaixo dados da sua conta</h4>
-    <form method="POST" action="" enctype="multipart/form-data">
-      <div class="form-group">
-        {% csrf_token %}
-        <div class="form-label-group">
-          {{ form|crispy }}
+    <div class="card mb-3 shadow" style="max-width: 1000px;">
+      <div class="row no-gutters">
+        <div class="col-md-4 text-center" >
+          <i class="fab fa-9x fas fa-dice-one text-primary mb-4 mx-auto"></i>    
+          <!--<img src="..." class="card-img" alt="...">-->
         </div>
-        <input type="submit" value="Atualizar" class="btn btn-primary">
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Plano Básico</h5>
+            <p class="card-text">1 Filme/Série por Dia
+              Suporte por E-mail
+              Download dos filmes
+              Acesso ao Aplicativo</p>
+            <p class="card-text"><small class="text-muted">R$9,90 / mês</small></p>
+          </div>
+        </div>
       </div>
-    </form>
+    </div>
   </div>
 
 </div>
