@@ -39,7 +39,7 @@ class PerfilForm(ModelForm):
         exclude = ['user', 'email_confirmado', 'imagem_perfil']
 
 # Formulário de atualização da imagem do perfil para dashboard do usuário
-class ImagemPerfilForm(ModelForm):
-    class Meta:
-        model = Perfil
-        fields = 'imagem_perfil'
+#class ImagemPerfilForm(ModelForm):
+#    class Meta:
+#        model = Perfil
+#        fields = 'imagem_perfil'
