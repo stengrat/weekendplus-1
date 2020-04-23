@@ -28,9 +28,14 @@
 * 2. AMD pip install .\mysqlclient-1.4.6-cp38-cp38-win_amd64.whl <br/>
 * 2.1 Intel  pip install .\mysqlclient-1.4.6-cp38-cp38-win32.whl <br/>
 </details>
-<details><summary>6. Finalizando</summary>
-* 1. Dentro da pasta weekendplus digite python manage.py migrations  <br/>
-* 1.1. Depois: python manage.py migrate  <br/>
+<details><summary>6. Configurando conexão banco de dados</summary>
+*1. Para configurar o banco de dados utilize o seguinte caminho. <br/>
+*1.1 weekendplus/wplus/settings.py  <br/>
+*1.2 Edite a area DATABASES  <br/>
+</details>
+<details><summary>7. Finalizando</summary>
+*1. Dentro da pasta weekendplus digite python manage.py migrations  <br/>
+*1.1. Depois: python manage.py migrate  <br/>
 *2. Depois: python manage.py runserver <br/>
 *3. Acesse http://127.0.0.1:8000/
 </details>
