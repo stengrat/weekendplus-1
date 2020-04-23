@@ -23,11 +23,17 @@
 1. *Em seu terminal digite: cd weekendplus <br/>
 2. *Em seguida:   pip install -r requirements.txt  
 </details>
-<details><summary>5. Finalizando</summary>
-* 1. Dentro da pasta weekendplus digitepython manage.py migrate  <br/>
+<details><summary>5. Instalando mysql conector </summary>
+* 1. Dentro da pasta weekendplus digite no terminal   <br/>
+* 2. AMD pip install .\mysqlclient-1.4.6-cp38-cp38-win_amd64.whl <br/>
+* 2.1 Intel  pip install .\mysqlclient-1.4.6-cp38-cp38-win32.whl <br/>
+</details>
+<details><summary>6. Finalizando</summary>
+* 1. Dentro da pasta weekendplus digite python manage.py migrate  <br/>
 *2. Depois: python manage.py runserver <br/>
 *3. Acesse http://127.0.0.1:8000/
 </details>
+
 
 ## Erro
 *  Caso ocorra um erro de segurança ao tentar ativar a virtual env abra o powershell em modo adiministrador e digite o seguinte comando: <br/>
