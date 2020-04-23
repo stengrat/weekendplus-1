@@ -16,106 +16,75 @@
     <!--row open-->
     <div class="row">
       <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 ">
-        <div class="card">
+        <div class="card shadow">
           <div class="card-header">
             <h4>Meu Perfil</h4>
           </div>
           <div class="card-body">
             <div class="text-center">
-              <div class="userprofile social">
-                <div class="userpic"> <img id="avatar"
-                    src="https://painel.cc.fidelityjogos.net/static/player/assets/img/photos-users/default.jpg"
-                    alt="Imagem de perfio" class="userpicimg"> </div>
-                <h3 class="username">Clare</h3>
-                <p>clare</p>
+              <div class="user-pic">
+                <div class="user-pic">
+                  <img class="img-responsive img-rounded" src="{{ request.user.perfil.imagem_perfil.url }}"
+                    alt="User picture" style="width: 100px;">
+                </div>
+                <span class="user-name">{{ request.user.first_name }}
+                  <strong>{{ request.user.last_name }}</strong>
+                </span>
+
               </div>
               <div class="text-center">
-
-                <button type="button" id="btn-edit-image" class="btn btn-primary">
-                  <i class="fa fa-edit"></i>
-                  Editar Imagem
-                </button>
-                <input type="file" class="hide" name="profile" id="input-edit-image"
-                  accept="image/gif, image/jpeg, image/jpg, image/png" />
-
-
-
-
-                <div class="alert hide" role="alert"></div>
-
-                <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">Editar Imagem</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="img-container">
-                          <img id="preview-cropper" style="max-width: 100%;"
-                            src="https://painel.cc.fidelityjogos.net/static/player/assets/img/photos-users/default.jpg">
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" id="crop">Salvar</button>
-                      </div>
-                    </div>
+                <form method="POST" action="" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-label-group">
+                    {{ form.imagem_perfil|as_crispy_field }}
                   </div>
-                </div>
-
+                  <button type="submit" class="btn btn-primary btn-block submit" type="submit" name="btn-save">
+                    <i class="fa fa-img"></i> Salvar
+                  </button>
+                </form>
               </div>
             </div>
           </div>
         </div>
+
         <div class="row">
           <div class="col-sm-12">
-            <div class="card">
+            <div class="card mt-3 shadow">
               <div class="card-header">
                 <h4>Meus Dados</h4>
               </div>
               <div class="card-body">
                 <form method="POST">
+                  {% csrf_token %}
                   <div class="row">
                     <div class="col-md-12 col-lg-6 col-sm-12">
                       <div class="form-group">
-                        <label for="name">Login</label>
-                        <input type="text" class="form-control" id="name" value="clare" disabled readonly />
+                        {{ form_conta.username|as_crispy_field }}
                       </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
                       <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <div class="input-group">
-                          <input type="email" class="form-control" id="email" value="ygorsa1998@hotmail.com" disabled
-                            readonly />
-                          <div class="input-group-append">
-                            <button class="btn btn-secondary" type="button" data-tgle="tooltip" title="Trocar E-mail"
-                              data-toggle="modal" data-target="#edit-mail">
-                              <i class="fa fa-edit"></i>
-                            </button>
-                          </div>
-                        </div>
-
+                        {{ form_conta.email|as_crispy_field }}
                       </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
                       <div class="form-group">
-                        <label for="truename">Nome</label>
-                        <input type="text" class="form-control" id="truename" name="truename" value="Clare"
-                          minlength="4" maxlength="32" required />
+                        {{ form_conta.first_name|as_crispy_field }}
                       </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
                       <div class="form-group">
-                        <label for="gender">Genero</label>
-                        <select name="gender" id="gender" class="form-control" required>
-                          <option value="0" selected>Masculino</option>
-                          <option value="1">Feminino</option>
-                        </select>
+                        {{ form_conta.last_name|as_crispy_field }}
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        {{ form_conta.password1|as_crispy_field }}
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        {{ form_conta.password2|as_crispy_field }}
                       </div>
                     </div>
                     <div class="col-sm-12">
@@ -125,96 +94,6 @@
                     </div>
                   </div>
                 </form>
-
-                <!-- Message Modal -->
-                <div class="modal fade" id="edit-mail" tabindex="-1" role="dialog" aria-hidden="true">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Alterar E-mail</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="card bg-info">
-                          <div class="card-body">
-                            Para trocar o email da sua conta, você deve validar em 2 etapas. <br>
-                            Será enviado uma validação no email Antigo e Novo. <br>
-                            Após a conclusão da validação dos emails, o novo email entra em efetivo.
-                          </div>
-                        </div>
-                        <form method="POST">
-                          <div class="row">
-                            <div class="col-sm-12">
-                              <div class="form-group">
-                                <label for="emaila">E-mail Atual</label>
-                                <input type="email" class="form-control" id="emaila" value="ygorsa1998@hotmail.com"
-                                  disabled readonly />
-                              </div>
-                            </div>
-                            <div class="col-sm-12">
-                              <div class="form-group">
-                                <label for="emailn">E-mail Novo</label>
-                                <input class="form-control" type="email" id="emailn" name="emailN" minlength="6"
-                                  maxlength="64" placeholder="Digite o novo e-mail valido" required />
-                              </div>
-                            </div>
-                            <div class="col-sm-12">
-                              <button class="btn btn-primary btn-block submit" type="submit" name="btn-alt-email">
-                                <i class="fa fa-check"></i> Alterar E-mail
-                              </button>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Message Modal closed -->
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12">
-            <div class="card">
-              <div class="card-header">
-                <h4>Trocar Senha</h4>
-              </div>
-  
-              <div class="card-body">
-  
-                <form method="POST">
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="form-group">
-                        <label for="passwd-atual">Senha Atual</label>
-                        <input class="form-control" type="password" id="atualsenha" name="atualsenha" minlength="4"
-                          maxlength="20" data-length="20" autocomplete="false" required />
-                      </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <div class="form-group">
-                        <label for="novasenha">Nova Senha</label>
-                        <input class="form-control" type="password" id="novasenha" name="novasenha" minlength="4"
-                          maxlength="20" data-length="20" autocomplete="false" required />
-                      </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <div class="form-group">
-                        <label for="confirnovasenha">Confirmação Nova Senha</label>
-                        <input class="form-control" type="password" id="confirnovasenha" name="confirnovasenha"
-                          equalTo="#novasenha" minlength="4" maxlength="20" data-length="20" autocomplete="false"
-                          required />
-                      </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <button class="btn btn-primary btn-block submit" type="submit" name="btn-alt-pass">
-                        <i class="fa fa-key"></i> Alterar Senha
-                      </button>
-                    </div>
-                  </div>
-                </form>
-  
               </div>
             </div>
           </div>
@@ -224,72 +103,42 @@
 
 
         <div class="col-sm-12">
-          <div class="card">
+          <div class="card shadow">
             <div class="card-header">
               <h4>Dados Pessoais</h4>
             </div>
 
             <div class="card-body">
-
-              <form method="POST">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label for="passwd-atual">CEP</label>
-                      <input class="form-control" type="password" id="atualsenha" name="atualsenha" minlength="4"
-                        maxlength="20" data-length="20" autocomplete="false" required />
-                    </div>
+              <form method="POST" action="" enctype="multipart/form-data">
+                <div class="form-group">
+                  {% csrf_token %}
+                  <div class="form-label-group">
+                    {{ form.telefone|as_crispy_field }}
                   </div>
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label for="novasenha">Logradouro</label>
-                      <input class="form-control" type="password" id="novasenha" name="novasenha" minlength="4"
-                        maxlength="20" data-length="20" autocomplete="false" required />
-                    </div>
+                  <div class="form-label-group">
+                    {{ form.cep|as_crispy_field }}
                   </div>
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label for="confirnovasenha">Complemento</label>
-                      <input class="form-control" type="password" id="confirnovasenha" name="confirnovasenha"
-                        equalTo="#novasenha" minlength="4" maxlength="20" data-length="20" autocomplete="false"
-                        required />
-                    </div>
+                  <div class="form-label-group">
+                    {{ form.pais|as_crispy_field }}
                   </div>
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label for="confirnovasenha">Numero</label>
-                      <input class="form-control" type="password" id="confirnovasenha" name="confirnovasenha"
-                        equalTo="#novasenha" minlength="4" maxlength="20" data-length="20" autocomplete="false"
-                        required />
-                    </div>
+                  <div class="form-label-group">
+                    {{ form.estado|as_crispy_field }}
                   </div>
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label for="confirnovasenha">Cidade</label>
-                      <input class="form-control" type="password" id="confirnovasenha" name="confirnovasenha"
-                        equalTo="#novasenha" minlength="4" maxlength="20" data-length="20" autocomplete="false"
-                        required />
-                    </div>
+                  <div class="form-label-group">
+                    {{ form.cidade|as_crispy_field }}
                   </div>
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label for="confirnovasenha">Estado</label>
-                      <input class="form-control" type="password" id="confirnovasenha" name="confirnovasenha"
-                        equalTo="#novasenha" minlength="4" maxlength="20" data-length="20" autocomplete="false"
-                        required />
-                    </div>
+                  <div class="form-label-group">
+                    {{ form.logradouro|as_crispy_field }}
                   </div>
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label for="confirnovasenha">Pais</label>
-                      <input class="form-control" type="password" id="confirnovasenha" name="confirnovasenha"
-                        equalTo="#novasenha" minlength="4" maxlength="20" data-length="20" autocomplete="false"
-                        required />
-                    </div>
+                  <div class="form-label-group">
+                    {{ form.complemento|as_crispy_field }}
+                  </div>
+                  <div class="form-label-group">
+                    {{ form.numero|as_crispy_field }}
                   </div>
                   <div class="col-sm-12">
                     <button class="btn btn-primary btn-block submit" type="submit" name="btn-alt-pass">
-                      <i class="fa fa-key"></i> Salvar
+                      Salvar
                     </button>
                   </div>
                 </div>
@@ -304,8 +153,6 @@
     <!--row closed-->
 
   </div>
-
-
 </div>
 <!--app-content closed-->
 

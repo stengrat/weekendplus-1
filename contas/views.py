@@ -81,27 +81,37 @@ def paginaObrigado(request):
 @login_required(login_url='login')
 def userDashboardPerfil(request):
     perfil = request.user.perfil
-    form = PerfilForm(instance=perfil)
 
+    form_conta = ContaUsuarioForm(instance=request.user)
+    form = PerfilForm(instance=perfil)
+       
+
+    if request.method == 'POST':
+        form_conta = ContaUsuarioForm(request.POST, instance=request.user)
+        if form_conta.is_valid():
+            form_conta.save()
+
+    context = {'form': form}
     if request.method == 'POST':
         form = PerfilForm(request.POST, request.FILES, instance=perfil)
         if form.is_valid():
             form.save()
 
-    context = {'form': form}
+
+    context = {
+        'form': form,
+        'form_conta': form_conta,        
+    }
+
     return render(request, 'contas/user_dashboard_perfil.html', context)
 
 
 #Decorator para acessar a pagina de dashboard, apenas se o usuário estiver logado, cao não, direciona para pagina de login
 @login_required(login_url='login')
 def userDashboardConta(request):
-    form = ContaUsuarioForm(instance=request.user)
-    if request.method == 'POST':
-        form = ContaUsuarioForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
 
-    context = {'form': form}
+
+    context = {}
     return render(request, 'contas/user_dashboard_conta.html', context)
 
 

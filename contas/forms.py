@@ -26,6 +26,8 @@ class CriacaoUsusarioForm(UserCreationForm):
         model = User
         fields = [
             'username',
+            'first_name',
+            'last_name',
             'email',
             'password1',
             'password2',
@@ -36,10 +38,4 @@ class PerfilForm(ModelForm):
     class Meta:
         model = Perfil
         fields = '__all__'
-        exclude = ['user', 'email_confirmado', 'imagem_perfil']
-
-# Formulário de atualização da imagem do perfil para dashboard do usuário
-#class ImagemPerfilForm(ModelForm):
-#    class Meta:
-#        model = Perfil
-#        fields = 'imagem_perfil'
+        exclude = ['user', 'email_confirmado']
