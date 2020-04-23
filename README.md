@@ -29,7 +29,8 @@
 * 2.1 Intel  pip install .\mysqlclient-1.4.6-cp38-cp38-win32.whl <br/>
 </details>
 <details><summary>6. Finalizando</summary>
-* 1. Dentro da pasta weekendplus digite python manage.py migrate  <br/>
+* 1. Dentro da pasta weekendplus digite python manage.py migrations  <br/>
+* 1.1. Depois: python manage.py migrate  <br/>
 *2. Depois: python manage.py runserver <br/>
 *3. Acesse http://127.0.0.1:8000/
 </details>
