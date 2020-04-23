@@ -24,7 +24,7 @@ def paginaRegistro(request):
             form = CriacaoUsusarioForm(request.POST)
             if form.is_valid():
                 user = form.save()
-                user.is_activate = False
+                user.is_active = False
                 user.save()
                 
                 # Definição do envio de email quando o formulário de registro é enviado e é válido
