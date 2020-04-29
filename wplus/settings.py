@@ -84,9 +84,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'weekendplus',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'USER': 'weekendplus',
+        'PASSWORD': 'fR3FCAjFyq9eDFRV',
+        'HOST': '144.91.110.253',
         'PORT': '3306',
 
     }
