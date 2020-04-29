@@ -103,3 +103,103 @@
 .background-cadet-blue {
     background: #4d919d;
 }
+
+
+/* HEADER COM VIDEO */
+.video-background-holder {
+    position: relative;
+    background-color: #171616;
+    height: calc(100vh - 72px);
+    min-height: 25rem;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .video-background-holder video {
+    position: absolute;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: 50%;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
+  
+  .video-background-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .video-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: 171616;
+    opacity: 0.5;
+    z-index: 1;
+  }
+/* FIM HEADER COM VIDEO */
+
+
+/* CLASSES DE TESTE ADICIONAR NOVO CODIGO ACIMA */
+.menu-wrapper {
+	position: relative;
+	max-width: 500px;
+	height: 100px;  
+	margin: 1em auto;
+	border: 1px solid black;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.menu {
+	height: 120px;
+	background: #f3f3f3;
+	box-sizing: border-box;
+	
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+}
+
+.menu .item {
+    display: inline-block;
+    width: 100px;
+    height: 100%;
+    outline: 1px dotted gray;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+.paddle {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 3em;
+}
+.left-paddle {
+	left: 0;
+}
+.right-paddle {
+	right: 0;
+}
+.hidden {
+	display: none;
+}
+
+.print {
+	margin: auto;
+	max-width: 500px;
+}
+
+.print span {
+    display: inline-block;
+    width: 100px;
+}
