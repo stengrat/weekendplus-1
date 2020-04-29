@@ -19,3 +19,13 @@ def paginaFilmesSeries(request):
         'last_upload': last_upload
     }
     return render(request, 'midia/pagina_filmes_series.html', context)
+
+def paginaFilmes(request):
+    filmes = Midia.objects.filter(categoria = "Filme").order_by('-id')[:6]
+    last_upload = Midia.objects.all().order_by('-id')[:1]
+
+    context = {
+        'filmes': filmes,
+        'last_upload': last_upload
+    }
+    return render(request, 'midia/pagina_filmes.html', context)
