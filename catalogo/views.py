@@ -29,3 +29,7 @@ def paginaFilmes(request):
         'last_upload': last_upload
     }
     return render(request, 'catologo/pagina_filmes.html', context)
+
+def paginaMidiaDescricao(request):
+    context = {}
+    return render(request, 'catalogo/midia_descricao.html', context)
