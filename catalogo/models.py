@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Filmes(models.Model):
 
@@ -84,3 +85,10 @@ class Series(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class FavoritosFilmes(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    filme_id = models.ForeignKey(Filmes, on_delete=models.CASCADE, null=True)
+
+    class Meta:
+        unique_together = (("user_id", "filme_id"),)
