@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
-from .models import Filmes, Series
+from .models import Filmes, Series, FavoritosFilmes
 
 # Create your views here.
 
@@ -31,5 +31,16 @@ def paginaFilmes(request):
     return render(request, 'catologo/pagina_filmes.html', context)
 
 def paginaMidiaDescricao(request):
+    data = {'success': False}
+    if(request.method == 'POST'):
+        filme = request.POST.get('userfilme')
+        fav = FavoritosFilmes()
+        fav.user_id = request.user
+        fav.filme_id = filme
+        fav.save()
+        data['success'] = True
+        print('Boa')
     context = {}
     return render(request, 'catalogo/midia_descricao.html', context)
+
+
