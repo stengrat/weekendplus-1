@@ -146,6 +146,25 @@
   }
 /* FIM HEADER COM VIDEO */
 
+/* HEADER PARA DASHBOARD */
+header.fixed-background-dashboard {
+    position: absolute;
+    top: 0;
+    width: 120%;
+    height: auto;
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-left: -100px;
+  }
+header.blue-gradient-bg-dashboard {
+    background:linear-gradient(
+        rgba(59, 97, 117), 
+        rgba(0, 0, 0, 0.7)
+    );
+}
+
+/* FIM HEADER PARA DASHBOARD */
 
 header.fixed-background {
     position:fixed;
