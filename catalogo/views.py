@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, JsonResponse
 
@@ -55,3 +55,17 @@ def paginaMidiaDescricao(request):
     return render(request, 'catalogo/midia_descricao.html', context)
 
 
+def paginaFavoritos(request):
+    user = request.user
+    filmes = FavoritosFilmes.objects.all().filter(user_id=user).order_by('-id')
+
+    context = {
+        'filmes': filmes,
+    }
+
+    return render(request, 'catalogo/favoritos.html', context)
+
+def favoritosDelete(request, id):
+    favorito = FavoritosFilmes.objects.get(id=id)
+    favorito.delete()
+    return redirect('favoritos')

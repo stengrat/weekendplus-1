@@ -30,6 +30,7 @@ $("#show-sidebar").click(function() {
 });
 
 
-   
+$('[data-toggle="tooltip"]').tooltip()
+
    
 });
