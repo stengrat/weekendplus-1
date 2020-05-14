@@ -2,15 +2,16 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, JsonResponse
 
-from .models import Filmes, Series, FavoritosFilmes
-from .forms import FilmeForm
+from .models import Filmes, Series, FavoritosFilmes, FavoritosSeries
+from .forms import FilmeForm, SerieForm
 
 # Create your views here.
 
 def paginaFilmesSeries(request):
-    filmes = Filmes.objects.order_by('-id')[:6]
-    series = Series.objects.order_by('-id')[:6]
-    ultimos = Filmes.objects.all().order_by('-id')[:6]
+    filmes = Filmes.objects.order_by('id')[:6]
+    series = Series.objects.order_by('id')[:6]
+    ultimos_filmes = Filmes.objects.all().order_by('-id')[:6]
+    ultimos_series = Series.objects.all().order_by('-id')[:6]
     last_upload = Filmes.objects.all().order_by('-id')[:1]
 
     form = FilmeForm()
@@ -21,13 +22,24 @@ def paginaFilmesSeries(request):
             filme.user_id = request.user
             filme.save()
             print('boa')
+
+    form_serie = SerieForm()
+    if(request.method == 'POST'):
+        form_serie = SerieForm(request.POST)
+        if form.is_valid():
+            serie = form_serie.save()
+            serie.user_id = request.user
+            serie.save()
+            print('boa')
    
     context = {
         'filmes': filmes, 
         'series': series, 
-        'ultimos': ultimos,
+        'ultimos_filmes': ultimos_filmes,
+        'ultimos_series': ultimos_series,
         'last_upload': last_upload,
-        'form': form
+        'form': form,
+        'form_serie': form_serie
     }
     return render(request, 'catalogo/pagina_filmes_series.html', context)
 
@@ -58,9 +70,11 @@ def paginaMidiaDescricao(request):
 def paginaFavoritos(request):
     user = request.user
     filmes = FavoritosFilmes.objects.all().filter(user_id=user).order_by('-id')
+    series = FavoritosSeries.objects.all().filter(user_id=user).order_by('-id')
 
     context = {
         'filmes': filmes,
+        'series': series,
     }
 
     return render(request, 'catalogo/favoritos.html', context)

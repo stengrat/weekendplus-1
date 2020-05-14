@@ -3,7 +3,7 @@
 
 <header class="fixed-background-dashboard blue-gradient-bg-dashboard">
     <div class="container mt-3">
-        <h2 class="mt-3 mb-3 text-white" style="margin-left: -150px;">Meus Favoritos</h2>
+        <h2 class="mt-3 mb-3 text-white" style="margin-left: -150px;">Meus Filmes Favoritos</h2>
         {% for filme in filmes %}
         <div class="card mb-3 shadow-lg col-sm-8 col-md-10" style="margin-left: -150px;">
             <div class="row no-gutters">
@@ -19,6 +19,32 @@
                             <i class="fas fa-play"></i>
                         </a>
                         <a class="btn btn-secondary" href="/delete/{{filme.id}}">
+                            <i class="fas fa-heart-broken"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="container mt-3">
+        <h2 class="mt-3 mb-3 text-white" style="margin-left: -150px;">Minhas Séries Favoritas</h2>
+        {% for serie in series %}
+        <div class="card mb-3 shadow-lg col-sm-8 col-md-10" style="margin-left: -150px;">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <img src="{{ serie.serie_id.thumbnail.url }}" class="img-fluid img-thumbnail" width="75%"
+                        alt="{{ serie.serie_id.titulo }}">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ serie.serie_id.titulo }}</h4>
+                        <p class="card-text">{{ serie.serie_id.descricao }}</p>
+                        <a class="btn btn-primary" href="#">
+                            <i class="fas fa-play"></i>
+                        </a>
+                        <a class="btn btn-secondary" href="/delete/{{serie.id}}">
                             <i class="fas fa-heart-broken"></i>
                         </a>
                     </div>

@@ -89,6 +89,15 @@ class Series(models.Model):
 class FavoritosFilmes(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     filme_id = models.ForeignKey(Filmes, on_delete=models.CASCADE, null=True)
+    horario = models.DateTimeField(auto_now=True, null=True)
 
     class Meta:
         unique_together = (("user_id", "filme_id"),)
+
+class FavoritosSeries(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    serie_id = models.ForeignKey(Series, on_delete=models.CASCADE, null=True)
+    horario = models.DateTimeField(auto_now=True, null=True)
+
+    class Meta:
+        unique_together = (("user_id", "serie_id"),)
