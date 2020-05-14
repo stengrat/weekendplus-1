@@ -80,7 +80,12 @@ def paginaFavoritos(request):
 
     return render(request, 'catalogo/favoritos.html', context)
 
-def favoritosDelete(request, id):
+def favoritosDeleteFilme(request, id):
     favorito = FavoritosFilmes.objects.get(id=id)
+    favorito.delete()
+    return redirect('favoritos')
+
+def favoritosDeleteSerie(request, id):
+    favorito = FavoritosSeries.objects.get(id=id)
     favorito.delete()
     return redirect('favoritos')
