@@ -74,8 +74,8 @@
                             {% if user.is_authenticated %}
                             <form method="POST" id="form_id">
                                 {% csrf_token %}
-                                <input hidden type="text" id="filme_id" name="filme_id" value="{{ ultimo.id }}"">
-                                <button class="btn btn-primary" type="submit"><i class="far fa-heart"></i></button>
+                                <input hidden type="text" id="filme_id" name="filme_id" value="{{ ultimo.id }}">
+                                <button class="btn btn-primary" type="submit" name="btn-filme"><i class="far fa-heart"></i></button>
                             </form>
                             <button type="button" class="btn btn-primary">Abrir</button>
                             {% else %}
@@ -142,10 +142,10 @@
                         </div>
                         <div class="modal-footer background-raisin-black">
                             {% if user.is_authenticated %}
-                            <form method="POST" id="form_id">
+                            <form method="POST">
                                 {% csrf_token %}
-                                <input hidden type="text" id="serie_id" name="serie_id" value="{{ ultima.id }}"">
-                                <button class="btn btn-primary" type="submit"><i class="far fa-heart"></i></button>
+                                <input hidden type="text" id="serie_id" name="serie_id" value="{{ ultima.id }}">
+                                <button class="btn btn-primary" type="submit" name="btn-serie"><i class="far fa-heart"></i></button>
                             </form>
                             <button type="button" class="btn btn-primary">Abrir</button>
                             {% else %}
@@ -213,8 +213,8 @@
                             {% if user.is_authenticated %}
                             <form method="POST" id="form_id">
                                 {% csrf_token %}
-                                <input hidden type="text" id="filme_id" name="filme_id" value="{{ filme.id }}"">
-                                <button class="btn btn-primary" type="submit"><i class="far fa-heart"></i></button>
+                                <input hidden type="text" id="filme_id" name="filme_id" value="{{ filme.id }}">
+                                <button class="btn btn-primary" type="submit" name="btn-filme"><i class="far fa-heart"></i></button>
                             </form>
                             <button type="button" class="btn btn-primary">Abrir</button>
                             
@@ -282,8 +282,8 @@
                             {% if user.is_authenticated %}
                             <form method="POST" id="form_id">
                                 {% csrf_token %}
-                                <input hidden type="text" id="serie_id" name="serie_id" value="{{ serie.id }}"">
-                                <button class="btn btn-primary" type="submit"><i class="far fa-heart"></i></button>
+                                <input hidden type="text" id="serie_id" name="serie_id" value="{{ serie.id }}">
+                                <button class="btn btn-primary" type="submit" name="btn-serie"><i class="far fa-heart"></i></button>
                             </form>
                             <button type="button" class="btn btn-primary">Abrir</button>
                             {% else %}

@@ -12,26 +12,27 @@ def paginaFilmesSeries(request):
     series = Series.objects.order_by('id')[:6]
     ultimos_filmes = Filmes.objects.all().order_by('-id')[:6]
     ultimos_series = Series.objects.all().order_by('-id')[:6]
-    last_upload = Filmes.objects.all().order_by('-id')[:1]
-
+    last_upload = Filmes.objects.all().order_by('-id')[:1]   
+     
     form = FilmeForm()
-    if(request.method == 'POST'):
+    if request.method == 'POST' and 'btn-filme' in request.POST:
         form = FilmeForm(request.POST)
         if form.is_valid():
             filme = form.save()
             filme.user_id = request.user
             filme.save()
             print('boa')
-
+            
     form_serie = SerieForm()
-    if(request.method == 'POST'):
+    if request.method == 'POST' and 'btn-serie' in request.POST:
         form_serie = SerieForm(request.POST)
-        if form.is_valid():
+        if form_serie.is_valid():
             serie = form_serie.save()
             serie.user_id = request.user
             serie.save()
-            print('boa')
-   
+            print('passei aqui')
+    
+    
     context = {
         'filmes': filmes, 
         'series': series, 
