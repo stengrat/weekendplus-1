@@ -7,22 +7,11 @@ from .forms import FilmeForm, SerieForm
 
 # Create your views here.
 
-def paginaFilmesSeries(request):
-    filmes = Filmes.objects.order_by('id')[:6]
+def paginaSeries(request):
     series = Series.objects.order_by('id')[:6]
-    ultimos_filmes = Filmes.objects.all().order_by('-id')[:6]
     ultimos_series = Series.objects.all().order_by('-id')[:6]
-    last_upload = Filmes.objects.all().order_by('-id')[:1]   
-     
-    form = FilmeForm()
-    if request.method == 'POST' and 'btn-filme' in request.POST:
-        form = FilmeForm(request.POST)
-        if form.is_valid():
-            filme = form.save()
-            filme.user_id = request.user
-            filme.save()
-            print('boa')
-            
+    last_upload = Series.objects.all().order_by('-id')[:1]   
+                 
     form_serie = SerieForm()
     if request.method == 'POST' and 'btn-serie' in request.POST:
         form_serie = SerieForm(request.POST)
@@ -30,29 +19,35 @@ def paginaFilmesSeries(request):
             serie = form_serie.save()
             serie.user_id = request.user
             serie.save()
-            print('passei aqui')
-    
     
     context = {
-        'filmes': filmes, 
         'series': series, 
-        'ultimos_filmes': ultimos_filmes,
         'ultimos_series': ultimos_series,
         'last_upload': last_upload,
-        'form': form,
         'form_serie': form_serie
     }
-    return render(request, 'catalogo/pagina_filmes_series.html', context)
+    return render(request, 'catalogo/pagina_series.html', context)
 
 def paginaFilmes(request):
-    filmes = Filmes.objects.order_by('-id')[:6]
+    filmes = Filmes.objects.order_by('id')[:6]
+    ultimos_filmes = Filmes.objects.all().order_by('-id')[:6]
     last_upload = Filmes.objects.all().order_by('-id')[:1]
+
+    form = FilmeForm()
+    if request.method == 'POST' and 'btn-filme' in request.POST:
+        form = FilmeForm(request.POST)
+        if form.is_valid():
+            filme = form.save()
+            filme.user_id = request.user
+            filme.save()
 
     context = {
         'filmes': filmes,
+        'ultimos_filmes': ultimos_filmes,
+        'form': form,
         'last_upload': last_upload
     }
-    return render(request, 'catologo/pagina_filmes.html', context)
+    return render(request, 'catalogo/pagina_filmes.html', context)
 
 def paginaMidiaDescricao(request):
     data = {'success': False}
