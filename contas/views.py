@@ -124,7 +124,7 @@ def ativacaoConta(request, uidb64, token):
         user = None
     
     if user is not None and contas_token_ativacao.check_token(user, token):
-        user.is_activate = True
+        user.is_active = True
         user.perfil.email_confirmado = True
         user.save()
         login(request, user)
