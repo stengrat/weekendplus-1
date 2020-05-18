@@ -3,6 +3,7 @@
 
 {% include 'base/navbar.html' %}
 <header class="fixed-background blue-gradient-bg">
+  
   <section>
 
     <div class="container text-white">
@@ -37,10 +38,10 @@
           </div>
 
           <div class="row mt-5">
-            <div class="col-sm">
+            <div class="col-sm-2">
               <i class="fas fa-play-circle fa-4x"></i>
             </div>
-            <div class="col-sm">
+            <div class="col-sm-2">
               <form method="POST" id="form_id">
                 {% csrf_token %}
                 <button type="submit"><i class="far fa-heart fa-4x "></i></button>
