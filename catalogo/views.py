@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, JsonResponse
 
@@ -84,3 +84,14 @@ def favoritosDeleteSerie(request, id):
     favorito = FavoritosSeries.objects.get(id=id)
     favorito.delete()
     return redirect('favoritos')
+
+
+def paginaDescricaoFilme(request, id):
+    filme = get_object_or_404(Filmes, id=id)
+    context = {'filme': filme}
+    return render(request, 'catalogo/detalhe_temp.html', context)
+
+def paginaDescricaoSerie(request, id):
+    serie = get_object_or_404(Series, id=id)
+    context = {'serie':serie}
+    return render(request, 'catalogo/pagina_detalhe_serie', context)
