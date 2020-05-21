@@ -89,7 +89,7 @@ def favoritosDeleteSerie(request, id):
 def paginaDescricaoFilme(request, id):
     filme = get_object_or_404(Filmes, id=id)
     context = {'filme': filme}
-    return render(request, 'catalogo/detalhe_temp.html', context)
+    return render(request, 'catalogo/filme_descricao.html', context)
 
 def paginaDescricaoSerie(request, id):
     serie = get_object_or_404(Series, id=id)
