@@ -179,10 +179,14 @@ header.fixed-background {
     background-repeat: no-repeat;
   }
   header.blue-gradient-bg {
-    background:linear-gradient(
+    background: -webkit-linear-gradient(rgba(59, 97, 117), rgba(0, 0, 0, 0.7)), url("https://dev.observatoriodocinema.bol.uol.com.br/wp-content/uploads/2019/02/the-man-in-the-high-castle.jpg");
+    background: linear-gradient(rgba(59, 97, 117), rgba(0, 0, 0, 0.7)), url("https://dev.observatoriodocinema.bol.uol.com.br/wp-content/uploads/2019/02/the-man-in-the-high-castle.jpg"); /* The least supported option. */
+
+    
+    /*background:linear-gradient(
       rgba(59, 97, 117), 
       rgba(0, 0, 0, 0.7)
-    );
+    );*/
   }
 
 
