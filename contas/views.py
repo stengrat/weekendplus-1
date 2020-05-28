@@ -134,3 +134,7 @@ def ativacaoConta(request, uidb64, token):
     else:
         messages.warning(request, ('O link de confirmação é inválido, possivelmente ele já foi utilizado.'))
         return redirect('')
+
+def paginaCheckout(request):
+    context = {}
+    return render(request, 'contas/checkout.html', context)
