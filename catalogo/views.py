@@ -104,8 +104,24 @@ def paginaDescricaoSerie(request, id):
 
 def paginaFilmeGenero(request):
     if request.method == "POST":
-        filtro = request.POST['filtro']
+        filtro = request.POST['genero']
         filmes = Filmes.objects.filter(genero=filtro).all()
+    
+    context = {'filmes':filmes}
+    return render(request, 'catalogo/filme-filtrado.html', context)
+
+def paginaFilmeDiretor(request):
+    if request.method == "POST":
+        filtro = request.POST['diretor']
+        filmes = Filmes.objects.filter(diretor=filtro).all()
+    
+    context = {'filmes':filmes}
+    return render(request, 'catalogo/filme-filtrado.html', context)
+
+def paginaFilmeAno(request):
+    if request.method == "POST":
+        filtro = request.POST['ano']
+        filmes = Filmes.objects.filter(ano=filtro).all()
     
     context = {'filmes':filmes}
     return render(request, 'catalogo/filme-filtrado.html', context)

@@ -38,7 +38,7 @@
                     <form method="POST" action="{% url 'filme-genero' %}">
                         {% csrf_token %}
                         <div class="input-group">
-                            <select class="custom-select" name=filtro aria-label="Example select with button addon">
+                            <select class="custom-select" name=genero aria-label="Example select with button addon">
                                 <option selected>Categoria</option>
                                 {% for genero in generos %}
                                     <option value="{{ genero }}" name="{{genero}}">{{ genero }}</a></option>
@@ -52,34 +52,34 @@
                 </div>   
                     
                 <div class="col-lg-4">
-                    <form method="POST" action="{% url 'filme-genero' %}">
+                    <form method="POST" action="">
                         {% csrf_token %}
                         <div class="input-group">
-                            <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                            <select class="custom-select" name="ano" aria-label="Example select with button addon">
                                 <option selected>Ano</option>
                                 {% for ano in anos %}
                                     <option>{{ ano }}</option>
                                 {% endfor %}
                             </select>
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">Button</button>
+                                <button class="btn btn-outline-secondary" type="submit" >Filtrar</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 
                 <div class="col-lg-4">
-                    <form method="POST" action="{% url 'filme-genero' %}">
+                    <form method="POST" action="">
                         {% csrf_token %}
                         <div class="input-group">
-                            <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                            <select class="custom-select" name="diretor" aria-label="Example select with button addon">
                                 <option selected>Diretor</option>
                                 {% for diretor in diretores %}
                                     <option>{{ diretor }}</option>
                                 {% endfor %}
                             </select>
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">Button</button>
+                                <button class="btn btn-outline-secondary" type="submit" >Filtrar</button>
                             </div>
                         </div>
                     </form>
