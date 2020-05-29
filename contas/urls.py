@@ -10,6 +10,7 @@ urlpatterns = [
     path('obrigado/', views.paginaObrigado, name='obrigado'),
     path('dashboard_perfil/', views.userDashboardPerfil, name='dashboard'),
     path('dashboard_conta/', views.userDashboardConta, name='dashboard_conta'),
+    path('checkout/', views.paginaCheckout, name='checkout'),
 
     # Rotas para reset de senha
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name='contas/password_reset.html'), name='reset_password'),
