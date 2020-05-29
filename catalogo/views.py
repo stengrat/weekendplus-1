@@ -29,9 +29,12 @@ def paginaSeries(request):
     return render(request, 'catalogo/pagina_series.html', context)
 
 def paginaFilmes(request):
-    filmes = Filmes.objects.order_by('id')[:6]
+    filmes = Filmes.objects.order_by('id')
     ultimos_filmes = Filmes.objects.all().order_by('-id')[:6]
     last_upload = Filmes.objects.all().order_by('-id')[:1]
+    diretores = Filmes.objects.values_list("diretor", flat=True).order_by("diretor").distinct()
+    anos = Filmes.objects.values_list("ano", flat=True).order_by("ano").distinct()
+    generos = Filmes.objects.values_list("genero", flat=True).order_by("genero").distinct()
 
     form = FilmeForm()
     if request.method == 'POST' and 'btn-filme' in request.POST:
@@ -45,7 +48,10 @@ def paginaFilmes(request):
         'filmes': filmes,
         'ultimos_filmes': ultimos_filmes,
         'form': form,
-        'last_upload': last_upload
+        'last_upload': last_upload,
+        'diretores': diretores,
+        'anos': anos,
+        'generos': generos,
     }
     return render(request, 'catalogo/pagina_filmes.html', context)
 
@@ -95,3 +101,11 @@ def paginaDescricaoSerie(request, id):
     serie = get_object_or_404(Series, id=id)
     context = {'serie':serie}
     return render(request, 'catalogo/pagina_detalhe_serie', context)
+
+def paginaFilmeGenero(request):
+    if request.method == "POST":
+        filtro = request.POST['filtro']
+        filmes = Filmes.objects.filter(genero=filtro).all()
+    
+    context = {'filmes':filmes}
+    return render(request, 'catalogo/filme-filtrado.html', context)
