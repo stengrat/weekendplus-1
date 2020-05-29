@@ -25,7 +25,7 @@ SECRET_KEY = 'n_)83v+-45w3t^t57$_-l_gmwrnawj)h@*o9pw8nct#v@n)@q!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [https://wplus.herokuapp.com]
+ALLOWED_HOSTS = []
 
 
 
