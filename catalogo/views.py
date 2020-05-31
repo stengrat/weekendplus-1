@@ -103,25 +103,52 @@ def paginaDescricaoSerie(request, id):
     return render(request, 'catalogo/pagina_detalhe_serie', context)
 
 def paginaFilmeGenero(request):
+    diretores = Filmes.objects.values_list("diretor", flat=True).order_by("diretor").distinct()
+    anos = Filmes.objects.values_list("ano", flat=True).order_by("ano").distinct()
+    generos = Filmes.objects.values_list("genero", flat=True).order_by("genero").distinct()
     if request.method == "POST":
         filtro = request.POST['genero']
         filmes = Filmes.objects.filter(genero=filtro).all()
     
-    context = {'filmes':filmes}
+    context = {
+        'filmes':filmes,
+        'diretores': diretores,
+        'anos': anos,
+        'generos': generos,
+    }
+
     return render(request, 'catalogo/filme-filtrado.html', context)
 
 def paginaFilmeDiretor(request):
+    diretores = Filmes.objects.values_list("diretor", flat=True).order_by("diretor").distinct()
+    anos = Filmes.objects.values_list("ano", flat=True).order_by("ano").distinct()
+    generos = Filmes.objects.values_list("genero", flat=True).order_by("genero").distinct()
     if request.method == "POST":
         filtro = request.POST['diretor']
         filmes = Filmes.objects.filter(diretor=filtro).all()
     
-    context = {'filmes':filmes}
+    context = {
+        'filmes':filmes,
+        'diretores': diretores,
+        'anos': anos,
+        'generos': generos,
+    }
+
     return render(request, 'catalogo/filme-filtrado.html', context)
 
 def paginaFilmeAno(request):
+    diretores = Filmes.objects.values_list("diretor", flat=True).order_by("diretor").distinct()
+    anos = Filmes.objects.values_list("ano", flat=True).order_by("ano").distinct()
+    generos = Filmes.objects.values_list("genero", flat=True).order_by("genero").distinct()
     if request.method == "POST":
         filtro = request.POST['ano']
         filmes = Filmes.objects.filter(ano=filtro).all()
     
-    context = {'filmes':filmes}
+    context = {
+        'filmes':filmes,
+        'diretores': diretores,
+        'anos': anos,
+        'generos': generos,
+    }
+    
     return render(request, 'catalogo/filme-filtrado.html', context)

@@ -6,7 +6,61 @@
 
 <section class="page-section text-white mt-0 " style="background-color: #171616;">
 
-    <div class="container ">
+    <div class="container mt-5">
+
+        <div class="row">
+            <div class="col-lg-4">
+                <form method="POST" action="{% url 'filme-genero' %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <select class="custom-select" name=genero aria-label="Example select with button addon">
+                            <option selected>Categoria</option>
+                            {% for genero in generos %}
+                                <option value="{{ genero }}" name="{{genero}}">{{ genero }}</a></option>
+                            {% endfor %}
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" >Filtrar</button>
+                        </div>
+                    </div>
+                </form>  
+            </div>   
+                
+            <div class="col-lg-4">
+                <form method="POST" action="{% url 'filme-ano' %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <select class="custom-select" name="ano" aria-label="Example select with button addon">
+                            <option selected>Ano</option>
+                            {% for ano in anos %}
+                                <option>{{ ano }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" >Filtrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="col-lg-4">
+                <form method="POST" action="{% url 'filme-diretor' %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <select class="custom-select" name="diretor" aria-label="Example select with button addon">
+                            <option selected>Diretor</option>
+                            {% for diretor in diretores %}
+                                <option>{{ diretor }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" >Filtrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <hr>
         <div class="col-lg-12 text-left">
             <h3 class="section-heading text-uppercase">Filmes</h3>
