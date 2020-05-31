@@ -9,6 +9,7 @@ urlpatterns = [
     path('filmes/ano/', views.paginaFilmeAno, name='filme-ano'),
     path('filmes/diretor/', views.paginaFilmeDiretor, name='filme-diretor'),
     path('filme-descricao/', views.paginaMidiaDescricao, name='filme-descricao'),
+    path('series-descricao/', views.paginaSeriesDescricao, name='series-descricao'),
     path('filme-detalhe/<int:id>/', views.paginaDescricaoFilme, name='filme-detalhe'),
     path('favoritos/', views.paginaFavoritos, name='favoritos'),
     path('delete_filme/<int:id>', views.favoritosDeleteFilme, name='delete_filme'),
