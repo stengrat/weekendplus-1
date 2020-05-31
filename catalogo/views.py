@@ -62,6 +62,19 @@ def paginaMidiaDescricao(request):
     context = {}
     return render(request, 'catalogo/midia_descricao.html', context)
 
+def paginaSeriesDescricao(request):
+    data = {'success': False}
+    if(request.method == 'POST'):
+        filme = request.POST.get('userfilme')
+        fav = FavoritosFilmes()
+        fav.user_id = request.user
+        fav.filme_id = filme
+        fav.save()
+        data['success'] = True
+        print('Boa')
+    context = {}
+    return render(request, 'catalogo/series_descricao.html', context)
+
 
 def paginaFavoritos(request):
     user = request.user
