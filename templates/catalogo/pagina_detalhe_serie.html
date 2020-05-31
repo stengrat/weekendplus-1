@@ -4,8 +4,10 @@
 {% include 'base/navbar.html' %}
 
 
+<body  background="{{ serie.background.url }}">
+
 <header class="fixed-background blue-gradient-bg">
-  <!--<img src="{{ serie.thumbnail }}"> -->
+ 
   <section>
 
     <div class="container text-white">
@@ -42,7 +44,8 @@
             <div class="col-sm-2">
               <form method="POST" id="form_id">
                 {% csrf_token %}
-                <button type="submit"><i class="far fa-heart fa-4x "></i></button>
+                <input hidden type="text" id="serie_id" name="serie_id" value="{{ serie.id }}">
+                <button  type="submit" name="btn-serie"><i class="far fa-heart fa-4x"></i></button>
               </form>
             </div>
             <div class="col-sm">
@@ -59,7 +62,7 @@
 </header>
 
 
-
+</body>
 
 
 

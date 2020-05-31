@@ -101,7 +101,7 @@ def paginaDescricaoFilme(request, id):
 
 def paginaDescricaoSerie(request, id):
     serie = get_object_or_404(Series, id=id)
-    context = {'serie':serie}
+    context = {'serie': serie}
     return render(request, 'catalogo/pagina_detalhe_serie.html', context)
 
 def paginaFilmeGenero(request):

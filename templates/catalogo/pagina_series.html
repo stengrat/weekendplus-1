@@ -184,12 +184,12 @@
                         </div>
                         <div class="modal-footer background-raisin-black">
                             {% if user.is_authenticated %}
-                            <form method="POST" id="form_id">
+                            <form method="POST" id="serie_id">
                                 {% csrf_token %}
                                 <input hidden type="text" id="serie_id" name="serie_id" value="{{ serie.id }}">
                                 <button class="btn btn-primary" type="submit" name="btn-serie"><i class="far fa-heart"></i></button>
                             </form>
-                            <button type="button" class="btn btn-primary">Abrir</button>
+                            <a type="button" class="btn btn-primary" href="{% url 'serie-detalhe' id=serie.id %}">Abrir</a>
                             {% else %}
                             <p>Você não fez login ainda</p>
                             {% endif %}
