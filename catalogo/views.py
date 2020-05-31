@@ -69,6 +69,8 @@ def paginaMidiaDescricao(request):
     return render(request, 'catalogo/midia_descricao.html', context)
 
 
+
+
 def paginaFavoritos(request):
     user = request.user
     filmes = FavoritosFilmes.objects.all().filter(user_id=user).order_by('-id')
@@ -100,7 +102,7 @@ def paginaDescricaoFilme(request, id):
 def paginaDescricaoSerie(request, id):
     serie = get_object_or_404(Series, id=id)
     context = {'serie':serie}
-    return render(request, 'catalogo/pagina_detalhe_serie', context)
+    return render(request, 'catalogo/pagina_detalhe_serie.html', context)
 
 def paginaFilmeGenero(request):
     diretores = Filmes.objects.values_list("diretor", flat=True).order_by("diretor").distinct()

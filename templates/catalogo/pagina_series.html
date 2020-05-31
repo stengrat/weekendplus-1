@@ -120,7 +120,7 @@
                                 <input hidden type="text" id="serie_id" name="serie_id" value="{{ ultima.id }}">
                                 <button class="btn btn-primary" type="submit" name="btn-serie"><i class="far fa-heart"></i></button>
                             </form>
-                            <button type="button" class="btn btn-primary">Abrir</button>
+                            <a type="button" class="btn btn-primary" href="{% url 'serie-detalhe' id=ultima.id %}">Abrir</a>
                             {% else %}
                             <p>Você não fez login ainda</p>
                             {% endif %}
