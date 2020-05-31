@@ -38,6 +38,7 @@ class Filmes(models.Model):
     classificacao = models.CharField(max_length=20, choices=CLASSIFICACAO_LIST)
     link = models.URLField(max_length=500, null=True)
     thumbnail = models.ImageField(null=True, blank=True)
+    background = models.ImageField(upload_to='filmes_background/', null=True, blank=True)
 
     def __str__(self):
         return self.titulo
@@ -81,7 +82,17 @@ class Series(models.Model):
     temporadas = models.IntegerField()
     link = models.URLField(max_length=500, null=True)
     thumbnail = models.ImageField(null=True, blank=True)
+    background = models.ImageField(upload_to='series_background/', null=True, blank=True)
 
+    def __str__(self):
+        return self.titulo
+
+class SerieEpisodio(models.Model):
+    serie_id = models.ForeignKey(Series, on_delete=models.CASCADE, null=True)
+    temporada = models.IntegerField()
+    titulo = models.CharField(max_length=300, null=True, blank=True)
+    numero_episodio = models.IntegerField()
+    link = models.URLField(max_length=500, null=True)
 
     def __str__(self):
         return self.titulo
