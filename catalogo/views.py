@@ -68,18 +68,7 @@ def paginaMidiaDescricao(request):
     context = {}
     return render(request, 'catalogo/midia_descricao.html', context)
 
-def paginaSeriesDescricao(request):
-    data = {'success': False}
-    if(request.method == 'POST'):
-        filme = request.POST.get('userfilme')
-        fav = FavoritosFilmes()
-        fav.user_id = request.user
-        fav.filme_id = filme
-        fav.save()
-        data['success'] = True
-        print('Boa')
-    context = {}
-    return render(request, 'catalogo/series_descricao.html', context)
+
 
 
 def paginaFavoritos(request):
@@ -113,7 +102,7 @@ def paginaDescricaoFilme(request, id):
 def paginaDescricaoSerie(request, id):
     serie = get_object_or_404(Series, id=id)
     context = {'serie':serie}
-    return render(request, 'catalogo/pagina_detalhe_serie', context)
+    return render(request, 'catalogo/pagina_detalhe_serie.html', context)
 
 def paginaFilmeGenero(request):
     diretores = Filmes.objects.values_list("diretor", flat=True).order_by("diretor").distinct()
