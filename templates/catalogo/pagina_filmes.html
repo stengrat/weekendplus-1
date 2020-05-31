@@ -18,7 +18,7 @@
             <div class="w-100 text-white">
                 <h1 class="display-4">Novo na W+ <br><i>{{ last.titulo }}</i></h1>
 
-                <a class="btn btn-primary btn-lg text-uppercase js-scroll-trigger mt-5" href="">Assistir agora</a>
+                <a class="btn btn-primary btn-lg text-uppercase js-scroll-trigger mt-5" href="{% url 'filme-detalhe' id=last.id %}">Assistir agora</a>
                 </p>
             </div>
         </div>
@@ -34,39 +34,58 @@
         <hr>
         <div class="container">
             <div class="row">
-                <div class="input-group col-lg-4">
-                    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                        <option selected>Categoria</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Button</button>
-                    </div>
+                <div class="col-lg-4">
+                    <form method="POST" action="{% url 'filme-genero' %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <select class="custom-select" name=genero aria-label="Example select with button addon">
+                                <option selected>Categoria</option>
+                                {% for genero in generos %}
+                                    <option value="{{ genero }}" name="{{genero}}">{{ genero }}</a></option>
+                                {% endfor %}
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit" >Filtrar</button>
+                            </div>
+                        </div>
+                    </form>  
+                </div>   
+                    
+                <div class="col-lg-4">
+                    <form method="POST" action="{% url 'filme-ano' %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <select class="custom-select" name="ano" aria-label="Example select with button addon">
+                                <option selected>Ano</option>
+                                {% for ano in anos %}
+                                    <option>{{ ano }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit" >Filtrar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="input-group col-lg-4">
-                    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                        <option selected>Ano</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Button</button>
-                    </div>
+                
+                <div class="col-lg-4">
+                    <form method="POST" action="{% url 'filme-diretor' %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <select class="custom-select" name="diretor" aria-label="Example select with button addon">
+                                <option selected>Diretor</option>
+                                {% for diretor in diretores %}
+                                    <option>{{ diretor }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit" >Filtrar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="input-group col-lg-4">
-                    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                        <option selected>Diretor</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Button</button>
-                    </div>
-                </div>
+                
+
             </div>
         
         <!-- Ultmas series -->
@@ -127,7 +146,7 @@
                                 <input hidden type="text" id="filme_id" name="filme_id" value="{{ ultima.id }}">
                                 <button class="btn btn-primary" type="submit" name="btn-serie"><i class="far fa-heart"></i></button>
                             </form>
-                            <button type="button" class="btn btn-primary">Abrir</button>
+                            <a type="button" class="btn btn-primary" href="{% url 'filme-detalhe' id=ultima.id %}">Abrir</a>
                             {% else %}
                             <p>Você não fez login ainda</p>
                             {% endif %}
@@ -148,9 +167,9 @@
             <h3 class="section-heading text-uppercase">Filmes</h3>
         </div>
 
-        <div class="row flex-row flex-nowrap shadow">
+        <div class="row flex-row shadow">
             {% for filme in filmes %}
-            <div class="col-sm-12 col-md-3 col-lg-2">
+            <div class="col-sm-12 col-md-3 col-lg-2 mb-4">
                 <div class="hovereffect">
                     <img src="{{ filme.thumbnail.url }}" class="img-fluid" alt="...">
                     <a class="stretched-link" data-toggle="modal" data-target="#filme_{{ filme.id }}"
@@ -163,7 +182,7 @@
                 </div>
             </div>
 
-            <!-- Modal Serie -->
+            <!-- Modal Filme -->
             <div class="modal fade " id="filme_{{ filme.id }}" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
@@ -196,7 +215,7 @@
                                 <input hidden type="text" id="filme_id" name="filme_id" value="{{ filme.id }}">
                                 <button class="btn btn-primary" type="submit" name="btn-serie"><i class="far fa-heart"></i></button>
                             </form>
-                            <button type="button" class="btn btn-primary">Abrir</button>
+                            <a type="button" class="btn btn-primary" href="{% url 'filme-detalhe' id=filme.id %}">Abrir</a>
                             {% else %}
                             <p>Você não fez login ainda</p>
                             {% endif %}

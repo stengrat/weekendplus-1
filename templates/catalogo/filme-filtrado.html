@@ -1,0 +1,134 @@
+{% extends 'base/index.html' %}
+{% load static %}
+{% block filmes_filtrados %}
+{% include 'base/navbar.html' %}
+
+
+<section class="page-section text-white mt-0 " style="background-color: #171616;">
+
+    <div class="container mt-5">
+
+        <div class="row">
+            <div class="col-lg-4">
+                <form method="POST" action="{% url 'filme-genero' %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <select class="custom-select" name=genero aria-label="Example select with button addon">
+                            <option selected>Categoria</option>
+                            {% for genero in generos %}
+                                <option value="{{ genero }}" name="{{genero}}">{{ genero }}</a></option>
+                            {% endfor %}
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" >Filtrar</button>
+                        </div>
+                    </div>
+                </form>  
+            </div>   
+                
+            <div class="col-lg-4">
+                <form method="POST" action="{% url 'filme-ano' %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <select class="custom-select" name="ano" aria-label="Example select with button addon">
+                            <option selected>Ano</option>
+                            {% for ano in anos %}
+                                <option>{{ ano }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" >Filtrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="col-lg-4">
+                <form method="POST" action="{% url 'filme-diretor' %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <select class="custom-select" name="diretor" aria-label="Example select with button addon">
+                            <option selected>Diretor</option>
+                            {% for diretor in diretores %}
+                                <option>{{ diretor }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" >Filtrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <hr>
+        <div class="col-lg-12 text-left">
+            <h3 class="section-heading text-uppercase">Filmes</h3>
+        </div>
+
+        <div class="row flex-row shadow">
+            {% for filme in filmes %}
+            <div class="col-sm-12 col-md-3 col-lg-2 mb-4">
+                <div class="hovereffect">
+                    <img src="{{ filme.thumbnail.url }}" class="img-fluid" alt="...">
+                    <a class="stretched-link" data-toggle="modal" data-target="#filme_{{ filme.id }}"
+                        data-id="filme_{{ filme.id }}"></a>
+                    <div class="overlay">
+                        <p>
+                            <a href="#">{{ filme.titulo }}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Filme -->
+            <div class="modal fade " id="filme_{{ filme.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body background-eerie-black">
+                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5 class="modal-title">{{ filme.titulo }}</h5>
+                                    <p class="small muted">{{ filme.descricao }}</p>
+                                    <p class="small muted">Ano: {{ filme.ano }}</p>
+                                    <p class="small muted">Duração: {{ filme.duracao }}min</p>
+                                    <p class="small muted">Categoria: {{ filme.categoria }} </p>
+                                    <p class="small muted">Gênero: {{ filme.genero }}</p>
+                                    <p class="small muted">Classificação: {{ filme.classificacao }}</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" src="{{ filme.link }}?rel=0"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer background-raisin-black">
+                            {% if user.is_authenticated %}
+                            <form method="POST" id="filme_id">
+                                {% csrf_token %}
+                                <input hidden type="text" id="filme_id" name="filme_id" value="{{ filme.id }}">
+                                <button class="btn btn-primary" type="submit" name="btn-serie"><i class="far fa-heart"></i></button>
+                            </form>
+                            <a type="button" class="btn btn-primary" href="{% url 'filme-detalhe' id=filme.id %}">Abrir</a>
+                            {% else %}
+                            <p>Você não fez login ainda</p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+
+{% endblock filmes_filtrados %}

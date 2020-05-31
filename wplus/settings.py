@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'catalogo',
 
     'crispy_forms',
+
+    'django_extensions',
+    'django-dia',
 ]
 
 MIDDLEWARE = [
@@ -157,3 +160,10 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'suporte.wplus@gmail.com'
 EMAIL_HOST_PASSWORD = 'Pikachu!@#'
+
+
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
