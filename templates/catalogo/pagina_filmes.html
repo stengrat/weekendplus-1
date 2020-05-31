@@ -144,7 +144,7 @@
                             <form method="POST">
                                 {% csrf_token %}
                                 <input hidden type="text" id="filme_id" name="filme_id" value="{{ ultima.id }}">
-                                <button class="btn btn-primary" type="submit" name="btn-serie"><i class="far fa-heart"></i></button>
+                                <button class="btn btn-primary" type="submit" name="btn-filme"><i class="far fa-heart"></i></button>
                             </form>
                             <a type="button" class="btn btn-primary" href="{% url 'filme-detalhe' id=ultima.id %}">Abrir</a>
                             {% else %}
@@ -213,7 +213,7 @@
                             <form method="POST" id="filme_id">
                                 {% csrf_token %}
                                 <input hidden type="text" id="filme_id" name="filme_id" value="{{ filme.id }}">
-                                <button class="btn btn-primary" type="submit" name="btn-serie"><i class="far fa-heart"></i></button>
+                                <button class="btn btn-primary" type="submit" name="btn-filme"><i class="far fa-heart"></i></button>
                             </form>
                             <a type="button" class="btn btn-primary" href="{% url 'filme-detalhe' id=filme.id %}">Abrir</a>
                             {% else %}

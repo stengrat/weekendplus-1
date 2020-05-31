@@ -96,7 +96,19 @@ def favoritosDeleteSerie(request, id):
 
 def paginaDescricaoFilme(request, id):
     filme = get_object_or_404(Filmes, id=id)
-    context = {'filme': filme}
+
+    form = FilmeForm()
+    if request.method == 'POST' and 'btn-filme' in request.POST:
+        form = FilmeForm(request.POST)
+        if form.is_valid():
+            filme = form.save()
+            filme.user_id = request.user
+            filme.save()
+
+    context = {
+        'filme': filme,
+        'form': form,
+    }
     return render(request, 'catalogo/filme_descricao.html', context)
 
 def paginaDescricaoSerie(request, id):
