@@ -166,7 +166,7 @@ header.blue-gradient-bg-dashboard {
 
 /* FIM HEADER PARA DASHBOARD */
 
-header.fixed-background {
+.fixed-background {
     position:fixed;
     margin-left: auto;
     margin-right: auto;
@@ -178,7 +178,7 @@ header.fixed-background {
     background-size: cover;
     background-repeat: no-repeat;
   }
-  header.blue-gradient-bg {
+.blue-gradient-bg {
     background: -webkit-linear-gradient(rgba(59, 97, 117), rgba(0, 0, 0, 0.7));
     background: linear-gradient(rgba(59, 97, 117), rgba(0, 0, 0, 0.7)); /* The least supported option. */
 
