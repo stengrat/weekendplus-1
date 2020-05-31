@@ -113,7 +113,19 @@ def paginaDescricaoFilme(request, id):
 
 def paginaDescricaoSerie(request, id):
     serie = get_object_or_404(Series, id=id)
-    context = {'serie': serie}
+    
+    form_serie = SerieForm()
+    if request.method == 'POST' and 'btn-serie' in request.POST:
+        form_serie = SerieForm(request.POST)
+        if form_serie.is_valid():
+            serie = form_serie.save()
+            serie.user_id = request.user
+            serie.save()
+
+    context = {
+        'serie': serie,
+        'form_serie': form_serie,
+    }
     return render(request, 'catalogo/pagina_detalhe_serie.html', context)
 
 def paginaFilmeGenero(request):

@@ -48,10 +48,10 @@
               <i class="fas fa-play-circle fa-4x"></i>
             </div>
             <div class="col-sm-2">
-              <form method="POST" id="form_id">
+              <form method="POST">
                 {% csrf_token %}
-                <input hidden type="text" id="serie_id" name="serie_id" value="{{ serie.id }}">
-                <button type="submit" name="btn-serie"><i class="far fa-heart fa-4x"></i></button>
+                <input hidden type="text" id="serie_id" name="serie_id" value="{{ ultima.id }}">
+                <button class="btn btn-primary" type="submit" name="btn-serie"><i class="far fa-heart"></i></button>
               </form>
             </div>
             <div class="col-sm">
