@@ -1,32 +1,13 @@
 {% extends 'base/index.html' %}
 {% load static %}
-{% block series %}
+{% block series_filtrados %}
 {% include 'base/navbar.html' %}
 
 
-<!-- Ultimos Adicionados -->
-{% for last in last_upload %}
-    <div class="video-background-holder">
-        <div class="video-background-overlay">
-            <iframe width="100%" height="100%" src="{{ last.link }}?autoplay=1&mute=1&showinfo=0&controls=0&modestbranding=1&iv_load_policy=3&rel=0&loop=1&enablejsapi=1" frameborder="0"  allow="autoplay; picture-in-picture" allowfullscreen></iframe>
-            
-        </div>
-        <div class="video-background-content container h-100">
-          <div class="d-flex h-100 text-left align-items-center">
-            <div class="w-100 text-white">
-              <h1 class="display-4">Novo na W+ <br><i>{{ last.titulo }}</i></h1>
-              
-              <a class="btn btn-primary btn-lg text-uppercase js-scroll-trigger mt-5" href="">Assistir agora</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-{% endfor %}
-
 <section class="page-section text-white mt-0 " style="background-color: #171616;">
-    <div class="container mt-0">
-        
+
+    <div class="container mt-5">
+
         <div class="row">
             <div class="col-lg-4">
                 <form method="POST" action="{% url 'serie-genero' %}">
@@ -79,89 +60,15 @@
                 </form>
             </div>
         </div>
-        
-    <!-- Ultmas series -->
-    
-    <div class="container ">
-        <hr>
-        <div class="container">
-            <div class="col-lg-12 text-left">
-                <h3 class="section-heading text-uppercase">Últimas Séries Adicionadas</h3>
-            </div>
-        </div>
-            <div class="row flex-row flex-nowrap shadow">
-               
-            {% for ultima in ultimos_series %}
-            <div class="col-sm-12 col-md-3 col-lg-2">
-                <div class="hovereffect">
-                    <img src="{{ ultima.thumbnail.url }}" class="img-fluid" alt="...">
-                    <a class="stretched-link" data-toggle="modal" data-target="#ultima_{{ ultima.id }}"
-                        data-id="ultima_{{ ultima.id }}"></a>
-                    <div class="overlay">
-                        <p>
-                            <a href="#">{{ ultima.titulo }}</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Modal Ultimo -->
-            <div class="modal fade " id="ultima_{{ ultima.id }}" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body background-eerie-black">
-                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h5 class="modal-title">{{ ultima.titulo }}</h5>
-                                    <p class="small muted">{{ ultima.descricao }}</p>
-                                    <p class="small muted">Ano: {{ ultima.ano }}</p>
-                                    <p class="small muted">Duração: {{ ultima.duracao }}min</p>
-                                    <p class="small muted">Categoria: {{ ultima.categoria }} </p>
-                                    <p class="small muted">Gênero: {{ ultima.genero }}</p>
-                                    <p class="small muted">Classificação: {{ ultima.classificacao }}</p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe class="embed-responsive-item" src="{{ ultima.link }}?rel=0"
-                                            allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer background-raisin-black">
-                            {% if user.is_authenticated %}
-                            <form method="POST">
-                                {% csrf_token %}
-                                <input hidden type="text" id="serie_id" name="serie_id" value="{{ ultima.id }}">
-                                <button class="btn btn-primary" type="submit" name="btn-serie"><i class="far fa-heart"></i></button>
-                            </form>
-                            <a type="button" class="btn btn-primary" href="{% url 'serie-detalhe' id=ultima.id %}">Abrir</a>
-                            {% else %}
-                            <p>Você não fez login ainda</p>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div> 
-
-
-    <!-- Series -->
-
-    <div class="container ">
         <hr>
         <div class="col-lg-12 text-left">
-            <h3 class="section-heading text-uppercase">Séries</h3>
+            <h3 class="section-heading text-uppercase">Series</h3>
         </div>
 
-        <div class="row flex-row flex-nowrap shadow">
+        <div class="row flex-row shadow">
             {% for serie in series %}
-            <div class="col-sm-12 col-md-3 col-lg-2">
+            <div class="col-sm-12 col-md-3 col-lg-2 mb-4">
                 <div class="hovereffect">
                     <img src="{{ serie.thumbnail.url }}" class="img-fluid" alt="...">
                     <a class="stretched-link" data-toggle="modal" data-target="#serie_{{ serie.id }}"
@@ -224,4 +131,4 @@
 
 
 
-{% endblock series %}
+{% endblock series_filtrados %}

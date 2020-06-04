@@ -11,6 +11,9 @@ def paginaSeries(request):
     series = Series.objects.order_by('id')[:6]
     ultimos_series = Series.objects.all().order_by('-id')[:6]
     last_upload = Series.objects.all().order_by('-id')[:1]   
+    diretores = Series.objects.values_list("diretor", flat=True).order_by("diretor").distinct()
+    anos = Series.objects.values_list("ano", flat=True).order_by("ano").distinct()
+    generos = Series.objects.values_list("genero", flat=True).order_by("genero").distinct()
                  
     form_serie = SerieForm()
     if request.method == 'POST' and 'btn-serie' in request.POST:
@@ -24,7 +27,10 @@ def paginaSeries(request):
         'series': series, 
         'ultimos_series': ultimos_series,
         'last_upload': last_upload,
-        'form_serie': form_serie
+        'form_serie': form_serie,
+        'diretores': diretores,
+        'anos': anos,
+        'generos': generos,
     }
     return render(request, 'catalogo/pagina_series.html', context)
 
@@ -178,3 +184,54 @@ def paginaFilmeAno(request):
     }
     
     return render(request, 'catalogo/filme-filtrado.html', context)
+
+def paginaSerieGenero(request):
+    diretores = Series.objects.values_list("diretor", flat=True).order_by("diretor").distinct()
+    anos = Series.objects.values_list("ano", flat=True).order_by("ano").distinct()
+    generos = Series.objects.values_list("genero", flat=True).order_by("genero").distinct()
+    if request.method == "POST":
+        filtro = request.POST['genero']
+        series = Series.objects.filter(genero=filtro).all()
+    
+    context = {
+        'series':series,
+        'diretores': diretores,
+        'anos': anos,
+        'generos': generos,
+    }
+
+    return render(request, 'catalogo/serie-filtrado.html', context)
+
+def paginaSerieDiretor(request):
+    diretores = Series.objects.values_list("diretor", flat=True).order_by("diretor").distinct()
+    anos = Series.objects.values_list("ano", flat=True).order_by("ano").distinct()
+    generos = Series.objects.values_list("genero", flat=True).order_by("genero").distinct()
+    if request.method == "POST":
+        filtro = request.POST['diretor']
+        series = Series.objects.filter(diretor=filtro).all()
+    
+    context = {
+        'series':series,
+        'diretores': diretores,
+        'anos': anos,
+        'generos': generos,
+    }
+
+    return render(request, 'catalogo/serie-filtrado.html', context)
+
+def paginaSerieAno(request):
+    diretores = Series.objects.values_list("diretor", flat=True).order_by("diretor").distinct()
+    anos = Series.objects.values_list("ano", flat=True).order_by("ano").distinct()
+    generos = Series.objects.values_list("genero", flat=True).order_by("genero").distinct()
+    if request.method == "POST":
+        filtro = request.POST['ano']
+        series = Series.objects.filter(ano=filtro).all()
+    
+    context = {
+        'series':series,
+        'diretores': diretores,
+        'anos': anos,
+        'generos': generos,
+    }
+    
+    return render(request, 'catalogo/serie-filtrado.html', context)

@@ -3,6 +3,9 @@ from . import views
 
 urlpatterns = [
     path('series/', views.paginaSeries, name='series'),
+    path('series/genero', views.paginaSerieGenero, name='serie-genero'),
+    path('series/ano', views.paginaSerieAno, name='serie-ano'),
+    path('series/diretor', views.paginaSerieDiretor, name='serie-diretor'),
     path('serie-detalhe/<int:id>/', views.paginaDescricaoSerie, name='serie-detalhe'),
     path('filmes/', views.paginaFilmes, name='filmes'),
     path('filmes/genero/', views.paginaFilmeGenero, name='filme-genero'),
