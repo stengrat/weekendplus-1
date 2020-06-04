@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse, JsonResponse
 
-from .models import Filmes, Series, FavoritosFilmes, FavoritosSeries
+from .models import Filmes, Series, FavoritosFilmes, FavoritosSeries, SerieEpisodio
 from .forms import FilmeForm, SerieForm
 
 # Create your views here.
@@ -131,6 +131,7 @@ def paginaDescricaoSerie(request, id):
     context = {
         'serie': serie,
         'form_serie': form_serie,
+        
     }
     return render(request, 'catalogo/pagina_detalhe_serie.html', context)
 
