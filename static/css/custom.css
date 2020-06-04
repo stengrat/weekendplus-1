@@ -189,6 +189,10 @@ header.blue-gradient-bg-dashboard {
     );*/
   }
 
+.direita{
+    float: right;
+}
+
 
 /* CLASSES DE TESTE ADICIONAR NOVO CODIGO ACIMA */
 .menu-wrapper {
