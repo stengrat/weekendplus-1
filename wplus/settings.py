@@ -23,8 +23,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfile')
 SECRET_KEY = 'n_)83v+-45w3t^t57$_-l_gmwrnawj)h@*o9pw8nct#v@n)@q!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
+#DEBUG = False
+DEBUG = os.environ.get("DEBUG", False)
 ALLOWED_HOSTS = ["52.200.4.228","http://wplus.herokuapp.com"]
 
 
