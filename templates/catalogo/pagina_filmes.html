@@ -97,10 +97,10 @@
                 <h3 class="section-heading text-uppercase">Últimos Filmes Adicionados</h3>
             </div>
         </div>
-            <div class="row flex-row flex-nowrap shadow">
+            <div class="row flex-row shadow">
                
             {% for ultima in ultimos_filmes %}
-            <div class="col-sm-12 col-md-3 col-lg-2">
+            <div class="col-sm-6 col-md-3 col-lg-2 mb-4">
                 <div class="hovereffect">
                     <img src="{{ ultima.thumbnail.url }}" class="img-fluid" alt="...">
                     <a class="stretched-link" data-toggle="modal" data-target="#ultima_{{ ultima.id }}"
@@ -169,7 +169,7 @@
 
         <div class="row flex-row shadow">
             {% for filme in filmes %}
-            <div class="col-sm-12 col-md-3 col-lg-2 mb-4">
+            <div class="col-sm-6 col-md-3 col-lg-2 mb-4">
                 <div class="hovereffect">
                     <img src="{{ filme.thumbnail.url }}" class="img-fluid" alt="...">
                     <a class="stretched-link" data-toggle="modal" data-target="#filme_{{ filme.id }}"

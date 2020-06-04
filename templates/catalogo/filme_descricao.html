@@ -40,13 +40,13 @@
 
           <div class="row mt-5">
             <div class="col-sm-2">
-              <a class="btn btn-primary" href="#play"><i class="fas fa-play-circle fa-4x"></i></a>              
+              <a class="btn btn-primary" href="#play"><i class="fas fa-play-circle fa-2x"></i></a>              
             </div>
             <div class="col-sm-2">
               <form method="POST" id="filme_id">
                 {% csrf_token %}
                 <input hidden type="text" id="filme_id" name="filme_id" value="{{ filme.id }}">
-                <button class="btn btn-primary" type="submit" name="btn-filme"><i class="far fa-heart"></i></button>
+                <button class="btn btn-primary" type="submit" name="btn-filme"><i class="far fa-heart fa-2x"></i></button>
               </form>
             </div>
             <div class="col-sm">
