@@ -167,3 +167,6 @@ GRAPH_MODELS = {
   'all_applications': True,
   'group_models': True,
 }
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
